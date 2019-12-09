@@ -427,7 +427,7 @@
     <!-- Onboarding screen Page 4 title -->
     <string name="OnboardingPageFour.title">Start investing today with as little as $50!</string>
     <!-- Onboarding screen Page 1 title -->
-    <string name="OnboardingPageOne.title">Welcome to your new global wallet!</string>
+    <string name="OnboardingPageOne.title">Welcome to CGift!</string>
     <!-- Onboarding screen Page 3 subtitle -->
     <string name="OnboardingPageThree.subtitle">Invest and diversify with CGift, easily and securely.</string>
     <!-- Onboarding screen Page 3 title -->
@@ -1093,7 +1093,7 @@
     <!-- Update PIN caption text -->
     <string name="UpdatePin.caption">Remember this PIN. If you forget it, you won\'t be able to access your assets.</string>
     <!-- PIN creation info. -->
-    <string name="UpdatePin.createInstruction">Your PIN will be used to unlock your CGift and send money.</string>
+    <string name="UpdatePin.createInstruction">Your PIN will be used to unlock CGift and send money.</string>
     <!-- Update PIN title -->
     <string name="UpdatePin.createTitle">Set PIN</string>
     <!-- Update PIN title -->

@@ -54,14 +54,14 @@ public class InputPinActivity extends BRActivity implements PinLayout.PinLayoutL
 
         mTitle = findViewById(R.id.title);
 
-        ImageButton faq = findViewById(R.id.faq_button);
-        faq.setOnClickListener(v -> {
-            if (!UiUtils.isClickAllowed()) {
-                return;
-            }
-            BaseWalletManager walletManager = WalletsMaster.getInstance().getCurrentWallet(InputPinActivity.this);
-            UiUtils.showSupportFragment(InputPinActivity.this, BRConstants.FAQ_SET_PIN, walletManager);
-        });
+//        ImageButton faq = findViewById(R.id.faq_button);
+//        faq.setOnClickListener(v -> {
+//            if (!UiUtils.isClickAllowed()) {
+//                return;
+//            }
+//            BaseWalletManager walletManager = WalletsMaster.getInstance().getCurrentWallet(InputPinActivity.this);
+//            UiUtils.showSupportFragment(InputPinActivity.this, BRConstants.FAQ_SET_PIN, walletManager);
+//        });
         int pinLength = BRKeyStore.getPinCode(this).length();
         mPinUpdateMode = getIntent().getBooleanExtra(EXTRA_PIN_MODE_UPDATE, false);
         if (pinLength > 0) {
