@@ -85,7 +85,7 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
     private BaseTextView mFiatTotal;
     private BRNotificationBar mNotificationBar;
     private ConstraintLayout mBuyLayout;
-    private LinearLayout mTradeLayout;
+    //private LinearLayout mTradeLayout;
     private LinearLayout mMenuLayout;
     private LinearLayout mListGroupLayout;
     private HomeViewModel mViewModel;
@@ -103,7 +103,7 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
         mFiatTotal = findViewById(R.id.total_assets_usd);
         mNotificationBar = findViewById(R.id.notification_bar);
         mBuyLayout = findViewById(R.id.buy_layout);
-        mTradeLayout = findViewById(R.id.trade_layout);
+        //mTradeLayout = findViewById(R.id.trade_layout);
         mMenuLayout = findViewById(R.id.menu_layout);
         mListGroupLayout = findViewById(R.id.list_group_layout);
         mBuyMenuLabel = findViewById(R.id.buy_text_view);
@@ -123,7 +123,7 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
                     WalletBitcoinManager.getInstance(HomeActivity.this).getCurrencyCode());
             UiUtils.startPlatformBrowser(HomeActivity.this, url);
         });
-        mTradeLayout.setOnClickListener(view -> UiUtils.startPlatformBrowser(HomeActivity.this, HTTPServer.getPlatformUrl(HTTPServer.URL_TRADE)));
+        //mTradeLayout.setOnClickListener(view -> UiUtils.startPlatformBrowser(HomeActivity.this, HTTPServer.getPlatformUrl(HTTPServer.URL_TRADE)));
         mMenuLayout.setOnClickListener(view -> {
             Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
             intent.putExtra(SettingsActivity.EXTRA_MODE, SettingsActivity.MODE_SETTINGS);

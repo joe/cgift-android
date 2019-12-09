@@ -48,7 +48,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="60dp"
-                android:background="@drawable/brd_logo_gradient" />
+                android:src="@drawable/ic_logo" />
 
             <com.breadwallet.presenter.customviews.BaseTextView
                 android:id="@+id/total_assets_label"
@@ -173,31 +173,31 @@
 
                 </android.support.constraint.ConstraintLayout>
 
-                <LinearLayout
-                    android:id="@+id/trade_layout"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="bottom"
-                    android:gravity="bottom"
-                    android:orientation="vertical"
-                    android:paddingBottom="4dp">
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/trade_layout"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_gravity="bottom"-->
+<!--                    android:gravity="bottom"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:paddingBottom="4dp">-->
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:src="@drawable/ic_menu_trade"
-                        android:tint="@color/white" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_marginTop="8dp"-->
+<!--                        android:src="@drawable/ic_menu_trade"-->
+<!--                        android:tint="@color/white" />-->
 
-                    <com.breadwallet.presenter.customviews.BaseTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="bottom"
-                        android:text="@string/HomeScreen.trade"
-                        android:textColor="@color/white" />
-                </LinearLayout>
+<!--                    <com.breadwallet.presenter.customviews.BaseTextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:gravity="bottom"-->
+<!--                        android:text="@string/HomeScreen.trade"-->
+<!--                        android:textColor="@color/white" />-->
+<!--                </LinearLayout>-->
 
                 <LinearLayout
                     android:id="@+id/menu_layout"

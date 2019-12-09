@@ -49,7 +49,7 @@ public class LogsUtils {
     private static final String FAILED_ERROR_MESSAGE = "Failed to get logs.";
     private static final String DEFAULT_LOGS_EMAIL = "android@brd.com";
     private static final String NO_EMAIL_APP_ERROR_MESSAGE = "No email app found.";
-    private static final String LOGS_EMAIL_SUBJECT = "BRD Android App Feedback [ID:%s]"; // Placeholder is for a unique id.
+    private static final String LOGS_EMAIL_SUBJECT = "CGift Android App Feedback [ID:%s]"; // Placeholder is for a unique id.
     private static final String LOGS_FILE_NAME = "Logs.txt";
     private static final String MIME_TYPE = "text/plain";
 

@@ -33,7 +33,7 @@
         <item name="tertiary_background">@color/tertiary_background</item>
         <item name="primary_background">@color/primary_background</item>
         <item name="secondary_text_color">@color/almost_black</item>
-        <item name="secondary_background">@color/secondary_background</item>
+        <item name="secondary_background">@color/black</item>
         <item name="add_wallet_button_background">@drawable/add_wallet_button_dark</item>
         <item name="remove_wallet_button_background">@drawable/remove_wallet_button_dark</item>
         <item name="hide_wallet_button_background">@drawable/remove_wallet_button_dark</item>
@@ -65,7 +65,7 @@
         <item name="secondary_text_color">@color/almost_black</item>
         <item name="tertiary_background">@color/extra_light_blue_background</item>
         <item name="primary_background">@color/extra_light_blue_background</item>
-        <item name="secondary_background">@color/extra_light_blue_background</item>
+        <item name="secondary_background">@color/spend_limit_list_divider_color_light</item>
         <item name="add_wallet_button_background">@drawable/add_wallet_button</item>
         <item name="remove_wallet_button_background">@drawable/remove_wallet_button</item>
         <item name="hide_wallet_button_background">@drawable/remove_wallet_button</item>

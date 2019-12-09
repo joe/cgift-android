@@ -112,7 +112,7 @@
     <color name="add_wallets_border_color">#e5e5e5</color>
 
     // Dark Mode colors
-    <color name="primary_background">#251935</color>
+    <color name="primary_background">#000</color>
     <color name="secondary_background">#302442</color>
     <color name="tertiary_background">#2E2540</color>
     <color name="prompt_background">#1E1C41</color>
@@ -124,9 +124,9 @@
     <color name="button_add_wallet_text">#4b77f3</color>
     <color name="button_cancel_add_wallet_text">#E7AA41</color>
     <color name="text_total_assets_label">#bfffffff</color>
-    <color name="pin_pad_delete">#FF548D</color>
-    <color name="pin_dot_filled_dark">#FF5193</color>
-    <color name="pin_dot_filled_light">#F29500</color>
+    <color name="pin_pad_delete">#FFF</color>
+    <color name="pin_dot_filled_dark">#FFF</color>
+    <color name="pin_dot_filled_light">#000</color>
     <color name="create_new_wallet_button_dark">#29ABE2</color>
     <color name="create_new_wallet_button_light">#4C98FD</color>
     <color name="recover_wallet_button_dark">#33FFFFFF</color>
@@ -153,17 +153,17 @@
 
 
     <array name="pin_digit_button_colors">
-        <item>#FE5A80</item>
-        <item>#FC6469</item>
-        <item>#FB6B5C</item>
-        <item>#FA714E</item>
-        <item>#FD5E76</item>
-        <item>#FC6568</item>
-        <item>#FB6B5B</item>
-        <item>#FE5A80</item>
-        <item>#FD5F75</item>
-        <item>#FC6667</item>
-        <item>#FF548D</item>
+        <item>#FFF</item>
+        <item>#FFF</item>
+        <item>#FFF</item>
+        <item>#FFF</item>
+        <item>#FFF</item>
+        <item>#FFF</item>
+        <item>#FFF</item>
+        <item>#FFF</item>
+        <item>#FFF</item>
+        <item>#FFF</item>
+        <item>#FFF</item>
     </array>
 
 </resources>

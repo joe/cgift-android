@@ -109,9 +109,9 @@ public class BRKeyboard extends LinearLayout implements View.OnClickListener {
             Button button = mPinButtons.get(i);
             button.setOnClickListener(this);
 
-            if (i <= LAST_NUMBER_INDEX) {
-                button.setText(getText(i, showAlphabet));
-            }
+//            if (i <= LAST_NUMBER_INDEX) {
+//                button.setText(getText(i, showAlphabet));
+//            }
 
             if (showAlphabet) {
                 button.setPadding(0, 0, 0, bottomPaddingPixels);
