@@ -82,7 +82,7 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
 
     private RecyclerView mWalletRecycler;
     private WalletListAdapter mAdapter;
-    private BaseTextView mFiatTotal;
+    //private BaseTextView mFiatTotal;
     private BRNotificationBar mNotificationBar;
     private ConstraintLayout mBuyLayout;
     //private LinearLayout mTradeLayout;
@@ -97,10 +97,10 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
         setContentView(R.layout.activity_home);
 
         // Show build info as a watermark on non prod builds like: TESTNET 3.10.1 build 1
-        setUpBuildInfoLabel();
+        //setUpBuildInfoLabel();
 
         mWalletRecycler = findViewById(R.id.rv_wallet_list);
-        mFiatTotal = findViewById(R.id.total_assets_usd);
+        //mFiatTotal = findViewById(R.id.total_assets_usd);
         mNotificationBar = findViewById(R.id.notification_bar);
         mBuyLayout = findViewById(R.id.buy_layout);
         //mTradeLayout = findViewById(R.id.trade_layout);
@@ -177,14 +177,14 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
         mViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         mViewModel.getWallets().observe(this, wallets -> mAdapter.setWallets(wallets));
 
-        mViewModel.getAggregatedFiatBalance().observe(this, aggregatedFiatBalance -> {
-            if (aggregatedFiatBalance == null) {
-                Log.e(TAG, "fiatTotalAmount is null");
-                return;
-            }
-            mFiatTotal.setText(CurrencyUtils.getFormattedAmount(HomeActivity.this,
-                    BRSharedPrefs.getPreferredFiatIso(HomeActivity.this), aggregatedFiatBalance));
-        });
+//        mViewModel.getAggregatedFiatBalance().observe(this, aggregatedFiatBalance -> {
+//            if (aggregatedFiatBalance == null) {
+//                Log.e(TAG, "fiatTotalAmount is null");
+//                return;
+//            }
+//            mFiatTotal.setText(CurrencyUtils.getFormattedAmount(HomeActivity.this,
+//                    BRSharedPrefs.getPreferredFiatIso(HomeActivity.this), aggregatedFiatBalance));
+//        });
         mViewModel.getNotificationLiveData().observe(this, notification -> {
             if (notification != null) {
                 InAppNotificationActivity.Companion.start(HomeActivity.this, notification);
@@ -234,7 +234,7 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
     @Override
     protected void onResume() {
         super.onResume();
-        showNextPromptIfNeeded();
+        //showNextPromptIfNeeded();
         InternetManager.registerConnectionReceiver(this, this);
         onConnectionChanged(InternetManager.getInstance().isConnected(this));
         mViewModel.refreshWallets();
@@ -266,10 +266,10 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
     }
 
     private void setUpBuildInfoLabel() {
-        TextView buildInfoTextView = findViewById(R.id.testnet_label);
-        String network = BuildConfig.BITCOIN_TESTNET ? NETWORK_TESTNET : NETWORK_MAINNET;
-        String buildInfo = network + " " + BuildConfig.VERSION_NAME + " build " + BuildConfig.BUILD_VERSION;
-        buildInfoTextView.setText(buildInfo);
-        buildInfoTextView.setVisibility(BuildConfig.BITCOIN_TESTNET || BuildConfig.DEBUG ? View.VISIBLE : View.GONE);
+//        TextView buildInfoTextView = findViewById(R.id.testnet_label);
+//        String network = BuildConfig.BITCOIN_TESTNET ? NETWORK_TESTNET : NETWORK_MAINNET;
+//        String buildInfo = network + " " + BuildConfig.VERSION_NAME + " build " + BuildConfig.BUILD_VERSION;
+//        buildInfoTextView.setText(buildInfo);
+//        buildInfoTextView.setVisibility(BuildConfig.BITCOIN_TESTNET || BuildConfig.DEBUG ? View.VISIBLE : View.GONE);
     }
 }

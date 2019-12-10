@@ -57,6 +57,7 @@
         <item name="deny_wallet_link_button">@color/deny_wallet_link_dark</item>
         <item name="confirmation_footer_background">@color/secondary_background</item>
         <item name="link_wallet_subtitle_text_color">@color/link_wallet_subtitle_dark</item>
+        <item name="settings_menu_background">@color/settings_menu_background</item>
     </style>
 
     <style name="AppTheme.Light" parent="AppTheme">
@@ -88,6 +89,7 @@
         <item name="approve_wallet_link_button">@color/approve_wallet_link_light</item>
         <item name="deny_wallet_link_button">@color/deny_wallet_link_light</item>
         <item name="link_wallet_subtitle_text_color">@color/link_wallet_subtitle</item>
+        <item name="settings_menu_background">@color/settings_menu_background</item>
     </style>
 
     <!-- Custom attributes for dark/light views and drawables -->
@@ -119,4 +121,5 @@
     <attr name="link_wallet_subtitle_text_color" format="reference"/>
     <attr name="new_price_alert_button" format="reference"/>
     <attr name="save_price_alert_button" format="reference"/>
+    <attr name="settings_menu_background" format="reference"/>
 </resources>

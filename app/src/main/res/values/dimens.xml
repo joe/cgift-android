@@ -47,4 +47,6 @@
 
     <dimen name="wallet_balance_primary_text_size" format="float" type="raw">30</dimen>
     <dimen name="wallet_balance_secondary_text_size" format="float" type="raw">16</dimen>
+    <dimen name="wallet_list_row_height">82dp</dimen>
+
 </resources>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <!-- App name -->
-    <string name="About.appName.android">BRD</string>
+    <string name="About.appName.android">CGift</string>
     <!-- About screen blog label -->
     <string name="About.blog">Блог</string>
     <!-- About screen footer -->
-    <string name="About.footer">Создано международной командой BRD. Версия %1$s Сборка %2$s</string>
+    <string name="About.footer">Создано международной командой CGift. Версия %1$s Сборка %2$s</string>
     <!-- Privay Policy button label -->
     <string name="About.privacy">Политика конфиденциальности</string>
     <!-- About screen reddit label -->
@@ -17,7 +17,7 @@
     <!-- About screen twitter label -->
     <string name="About.twitter">Twitter</string>
     <!-- About screen wallet ID label -->
-    <string name="About.walletID">Идентификатор BRD для вознаграждений</string>
+    <string name="About.walletID">Идентификатор CGift для вознаграждений</string>
     <!-- Close modal button accessibility label -->
     <string name="AccessibilityLabels.close">Закрыть</string>
     <!-- Support center accessibiliy label -->
@@ -31,7 +31,7 @@
     <!-- Loading Wallet Message -->
     <string name="Account.loadingMessage">Загружаем кошелек</string>
     <!-- Default wallet name -->
-    <string name="AccountHeader.defaultWalletName">Мой BRD</string>
+    <string name="AccountHeader.defaultWalletName">Мой CGift</string>
     <!-- Third party keyboard warning -->
     <string name="Alert.customKeyboard.android">Похоже, что вы пользуетесь клавиатурой третьей стороны, которая может записывать последовательность нажимаемых клавиш и похитить ваш Бумажный ключ. Переключитесь на клавиатуру Android по умолчанию для дополнительной защиты.</string>
     <!-- Error alert title -->
@@ -39,11 +39,11 @@
     <!-- Keystore error -->
     <string name="Alert.keystore.generic.android">Имеется проблема с хранилищем ключей в вашей ОС Android, обратитесь по адресу: support@cgift.io</string>
     <!-- KeyStore error, keys are invalidated -->
-    <string name="Alert.keystore.invalidated.android">Ваши зашифрованные данные приложения BRD были недавно аннулированы, так как была отключена блокировка экрана вашего устройства Android.</string>
+    <string name="Alert.keystore.invalidated.android">Ваши зашифрованные данные приложения CGift были недавно аннулированы, так как была отключена блокировка экрана вашего устройства Android.</string>
     <!-- Warn user key store data has been invalidate because the user changed their security settings. The user must uninstall. -->
-    <string name="Alert.keystore.invalidated.uninstall.android">Мы не можем продолжить, потому что ваши настройки блокировки экрана были изменены (например, пароль отключен, отпечатки пальцев изменены). В целях безопасности Android навсегда заблокировал ваше хранилище ключей. Поэтому ваши данные BRD следует стереть путем удаления приложения.\n\nНе волнуйтесь, ваши средства в безопасности! Переустановите приложение и восстановите свой кошелек с помощью бумажного ключа.</string>
+    <string name="Alert.keystore.invalidated.uninstall.android">Мы не можем продолжить, потому что ваши настройки блокировки экрана были изменены (например, пароль отключен, отпечатки пальцев изменены). В целях безопасности Android навсегда заблокировал ваше хранилище ключей. Поэтому ваши данные CGift следует стереть путем удаления приложения.\n\nНе волнуйтесь, ваши средства в безопасности! Переустановите приложение и восстановите свой кошелек с помощью бумажного ключа.</string>
     <!-- Warn user key store data has been invalidate because the user changed their security settings. The user must wipe their app data. -->
-    <string name="Alert.keystore.invalidated.wipe.android">Мы не можем продолжить, потому что ваши настройки блокировки экрана были изменены (например, пароль отключен, отпечатки пальцев изменены). В целях безопасности Android навсегда заблокировал ваше хранилище ключей. Поэтому данные вашего приложения BRD необходимо стереть. \nНе волнуйтесь, ваши средства в безопасности! Восстановите свой кошелек, используя бумажный ключ.</string>
+    <string name="Alert.keystore.invalidated.wipe.android">Мы не можем продолжить, потому что ваши настройки блокировки экрана были изменены (например, пароль отключен, отпечатки пальцев изменены). В целях безопасности Android навсегда заблокировал ваше хранилище ключей. Поэтому данные вашего приложения CGift необходимо стереть. \nНе волнуйтесь, ваши средства в безопасности! Восстановите свой кошелек, используя бумажный ключ.</string>
     <!-- Keystore error title -->
     <string name="Alert.keystore.title.android">Ошибка хранилища ключей Android</string>
     <!-- No internet alert message -->
@@ -73,11 +73,11 @@
     <!-- Fingerprint was recognized by the scanner -->
     <string name="Alerts.touchIdSucceeded.android">Отпечаток пальца идентифицирован</string>
     <!-- Tell the user where they can enable permissions to access device storage. -->
-    <string name="Android.allowFileSystemAccess">Включите разрешения на хранение в настройках вашего устройства: «Настройки» &gt; «Приложения» &gt; «BRD» &gt; «Разрешения».</string>
+    <string name="Android.allowFileSystemAccess">Включите разрешения на хранение в настройках вашего устройства: «Настройки» &gt; «Приложения» &gt; «CGift» &gt; «Разрешения».</string>
     <!-- The "home" screen is the name of the top level menu for the app. -->
     <string name="Android.BCH.welcome.message">Доступ к BCH в вашем кошельке теперь возможен с главного экрана.</string>
     <!-- Warning about using apps that can alter the screen -->
-    <string name="Android.screenAlteringMessage">BRD не сможет нормально работать, если не отключить изменяющие экран приложения (такие как Twilight).</string>
+    <string name="Android.screenAlteringMessage">CGift не сможет нормально работать, если не отключить изменяющие экран приложения (такие как Twilight).</string>
     <!-- An app that alters the screen ("screen-altering app") has been detected. -->
     <string name="Android.screenAlteringTitle">Обнаружено изменяющее экран приложение</string>
     <!-- JSON Serialization error message -->
@@ -225,7 +225,7 @@
     <!-- Email unavailable alert title -->
     <string name="ErrorMessages.emailUnavailableTitle">Электронное письмо недоступно</string>
     <!-- Message that gets shown when we've detected the user has encountered the looping lock-screen bug. (preserve [ ] characters) -->
-    <string name="ErrorMessages.loopingLockScreen.android">BRD невозможно аутентифицировать из-за ошибки в вашей версии Android. [Пожалуйста, нажмите сюда, чтобы узнать подробности.]</string>
+    <string name="ErrorMessages.loopingLockScreen.android">CGift невозможно аутентифицировать из-за ошибки в вашей версии Android. [Пожалуйста, нажмите сюда, чтобы узнать подробности.]</string>
     <!-- Messaging unavailable alert title -->
     <string name="ErrorMessages.messagingUnavailableMessage">Для этого устройства отправка сообщений не настроена.</string>
     <!-- Messaging unavailable alert title -->
@@ -235,11 +235,11 @@
     <!-- You can customize your Face ID Spending Limit from the [menu] -->
     <string name="FaceIDSettings.customizeText">Вы можете индивидуально настроить ваш лимит расходов Face ID от %1$s.</string>
     <!-- Face Id screen label -->
-    <string name="FaceIDSettings.label">Используйте ваше лицо, чтобы разблокировать ваш BRD и отправить деньги в соответствии с установленным лимитом.</string>
+    <string name="FaceIDSettings.label">Используйте ваше лицо, чтобы разблокировать ваш CGift и отправить деньги в соответствии с установленным лимитом.</string>
     <!-- Title of the screen for setting the Face ID Spending Limit -->
     <string name="FaceIDSettings.linkText">Меню лимита расходов Face ID</string>
-    <!-- Setting to turn on Face ID for BRD -->
-    <string name="FaceIDSettings.switchLabel">Включить Face ID для BRD</string>
+    <!-- Setting to turn on Face ID for CGift -->
+    <string name="FaceIDSettings.switchLabel">Включить Face ID для CGift</string>
     <!-- Face ID settings view title -->
     <string name="FaceIDSettings.title">Face ID</string>
     <!-- Instructions on how to turn on face id on the iPhone. Please ensure the name of the menu in this string matches the wording Apple uses in the iPhone menu. -->
@@ -305,13 +305,13 @@
     <!-- Caption for graphics -->
     <string name="Import.leftCaption">Секретный ключ</string>
     <!-- Import wallet intro screen message -->
-    <string name="Import.message">Секретные ключи часто печатаются на бумаге в виде QR-кода и используются для хранения средств в автономном режиме. Восстановите секретный ключ, чтобы перенести все деньги, которые он контролирует, в BRD с помощью одной транзакции.</string>
+    <string name="Import.message">Секретные ключи часто печатаются на бумаге в виде QR-кода и используются для хранения средств в автономном режиме. Восстановите секретный ключ, чтобы перенести все деньги, которые он контролирует, в CGift с помощью одной транзакции.</string>
     <!-- Enter password alert view title -->
     <string name="Import.password">Этот персональный ключ защищен паролем.</string>
     <!-- password textfield placeholder -->
     <string name="Import.passwordPlaceholder">пароль</string>
     <!-- Caption for graphics -->
-    <string name="Import.rightCaption">Ваш кошелек BRD</string>
+    <string name="Import.rightCaption">Ваш кошелек CGift</string>
     <!-- Scan Private key button label -->
     <string name="Import.scan">Сканировать персональный ключ</string>
     <!-- Import wallet success alert title -->
@@ -331,9 +331,9 @@
     <!-- Ignore jailbreak warning button -->
     <string name="JailbreakWarnings.ignore">Игнорировать</string>
     <!-- Jailbreak warning message -->
-    <string name="JailbreakWarnings.messageWithBalance">БЕЗОПАСНОСТЬ УСТРОЙСТВА ПОДВЕРГНУТА РИСКУ\n Какое-либо приложение по снятию ограничений с файловой системы может получить доступ к данным цепочки ключей  BRD и украсть ваши биткойны! Немедленно очистите ваш кошелек и восстановите его на безопасном устройстве.</string>
+    <string name="JailbreakWarnings.messageWithBalance">БЕЗОПАСНОСТЬ УСТРОЙСТВА ПОДВЕРГНУТА РИСКУ\n Какое-либо приложение по снятию ограничений с файловой системы может получить доступ к данным цепочки ключей  CGift и украсть ваши биткойны! Немедленно очистите ваш кошелек и восстановите его на безопасном устройстве.</string>
     <!-- Jailbreak warning message -->
-    <string name="JailbreakWarnings.messageWithoutBalance">БЕЗОПАСНОСТЬ УСТРОЙСТВА ПОДВЕРГНУТА РИСКУ\n Какое-либо приложение по снятию ограничений с файловой системы может получить доступ к данным цепочки ключей  BRD и украсть ваши биткойны. Пожалуйста, используйте BRD только на устройствах с не снятыми с файловой системы ограничениями.</string>
+    <string name="JailbreakWarnings.messageWithoutBalance">БЕЗОПАСНОСТЬ УСТРОЙСТВА ПОДВЕРГНУТА РИСКУ\n Какое-либо приложение по снятию ограничений с файловой системы может получить доступ к данным цепочки ключей  CGift и украсть ваши биткойны. Пожалуйста, используйте CGift только на устройствах с не снятыми с файловой системы ограничениями.</string>
     <!-- Jailbreak warning title -->
     <string name="JailbreakWarnings.title">ПРЕДУПРЕЖДЕНИЕ</string>
     <!-- Wipe wallet button -->
@@ -355,7 +355,7 @@
     <!-- Location services disabled error -->
     <string name="LocationPlugin.disabled">Сервисы определения местоположения отключены.</string>
     <!-- No permissions for location services -->
-    <string name="LocationPlugin.notAuthorized">У BRD не разрешения на доступ к сервисам определения местоположения.</string>
+    <string name="LocationPlugin.notAuthorized">У CGift не разрешения на доступ к сервисам определения местоположения.</string>
     <!-- Wallet creation date prefix -->
     <string name="ManageWallet.creationDatePrefix">Вы создали ваш кошелек %1$s</string>
     <!-- Manage wallet description text -->
@@ -429,13 +429,13 @@
     <!-- Onboarding screen Page 1 title -->
     <string name="OnboardingPageOne.title">Добро пожаловать в ваш новый глобальный кошелек!</string>
     <!-- Onboarding screen Page 3 subtitle -->
-    <string name="OnboardingPageThree.subtitle">Инвестируйте и диверсифицируйте c BRD, просто и безопасно.</string>
+    <string name="OnboardingPageThree.subtitle">Инвестируйте и диверсифицируйте c CGift, просто и безопасно.</string>
     <!-- Onboarding screen Page 3 title -->
     <string name="OnboardingPageThree.title">Покупайте и торгуйте биткойном, токенами и прочими цифровыми валютами.</string>
     <!-- Onboarding screen Page 2 subtitle -->
     <string name="OnboardingPageTwo.subtitle">Под нашей защитой находятся активы общей суммой более 6 миллиардов долларов США.</string>
     <!-- Onboarding screen Page 2 title -->
-    <string name="OnboardingPageTwo.title">Присоединяйтесь к миллионам людей по всему миру, которые доверяют BRD.</string>
+    <string name="OnboardingPageTwo.title">Присоединяйтесь к миллионам людей по всему миру, которые доверяют CGift.</string>
     <!-- Eg. Send 1.0Eth to purchase CCC -->
     <string name="PaymentConfirmation.amountText">Отправить %1$s, чтобы купить %2$s</string>
     <!-- Payment confirmation view title -->
@@ -493,7 +493,7 @@
     <!-- Transaction rejected prompt title -->
     <string name="Prompts.RecommendRescan.title">Транзакция отклонена</string>
     <!-- Share data prompt body -->
-    <string name="Prompts.ShareData.body">Помогите улучшить BRD, поделившись с нами своими анонимными данными</string>
+    <string name="Prompts.ShareData.body">Помогите улучшить CGift, поделившись с нами своими анонимными данными</string>
     <!-- Share data prompt title -->
     <string name="Prompts.ShareData.title">Поделиться анонимными данными</string>
     <!-- Enable touch ID prompt body -->
@@ -507,7 +507,7 @@
     <!-- Button on fingerprint prompt so the user can enter their PIN instead -->
     <string name="Prompts.TouchId.usePin.android">PIN-код</string>
     <!-- Upgrade PIN prompt body. -->
-    <string name="Prompts.UpgradePin.body">BRD обновил свой интерфейс до использования 6-цифрового PIN-кода. Коснитесь здесь для обновления.</string>
+    <string name="Prompts.UpgradePin.body">CGift обновил свой интерфейс до использования 6-цифрового PIN-кода. Коснитесь здесь для обновления.</string>
     <!-- Upgrade PIN prompt title. -->
     <string name="Prompts.UpgradePin.title">Обновить PIN-код</string>
     <!-- Body text for the push notifications prompt. -->
@@ -515,11 +515,11 @@
     <!-- Push notifications are disabled alert title" -->
     <string name="PushNotifications.disabled">Уведомления Отключены</string>
     <!-- Body text when push notifications are disabled. -->
-    <string name="PushNotifications.disabledBody">Включите уведомления, чтобы получать спецпредложения и новости от BRD.</string>
+    <string name="PushNotifications.disabledBody">Включите уведомления, чтобы получать спецпредложения и новости от CGift.</string>
     <!-- Body text when push notifications are enabled. -->
-    <string name="PushNotifications.enabledBody">Вы получаете спецпредложения и новости от BRD.</string>
-    <!-- Instructions to enable push notifications for BRD in the phone's system settings. -->
-    <string name="PushNotifications.enableInstructions">Похоже, уведомления отключены. Перейдите в настройки, чтобы включить уведомления от BRD.</string>
+    <string name="PushNotifications.enabledBody">Вы получаете спецпредложения и новости от CGift.</string>
+    <!-- Instructions to enable push notifications for CGift in the phone's system settings. -->
+    <string name="PushNotifications.enableInstructions">Похоже, уведомления отключены. Перейдите в настройки, чтобы включить уведомления от CGift.</string>
     <!-- Push notifications toggle switch label -->
     <string name="PushNotifications.label">Получать Push-уведомления</string>
     <!-- Push notifications are off label -->
@@ -533,9 +533,9 @@
     <!-- Google play review prompt, revivew button -->
     <string name="RateAppPrompt.Button.Dismiss.Android">Нет, спасибо</string>
     <!-- Google play review prompt, dismiss button -->
-    <string name="RateAppPrompt.Button.RateApp.Android">Оцените BRD</string>
+    <string name="RateAppPrompt.Button.RateApp.Android">Оцените CGift</string>
     <!-- Google play review prompt title -->
-    <string name="RateAppPrompt.Title.Android">Оцените BRD</string>
+    <string name="RateAppPrompt.Title.Android">Оцените CGift</string>
     <!-- Address copied message. -->
     <string name="Receive.copied">Скопировано в буфер обмена.</string>
     <!-- Share via email button label -->
@@ -557,7 +557,7 @@
     <!-- Enter paper key instruction -->
     <string name="RecoverWallet.instruction">Введите бумажный ключ</string>
     <!-- Recover wallet intro -->
-    <string name="RecoverWallet.intro">Восстановите Ваш BRD-кошелек с помощью бумажного ключа.</string>
+    <string name="RecoverWallet.intro">Восстановите Ваш CGift-кошелек с помощью бумажного ключа.</string>
     <!-- Invalid paper key message -->
     <string name="RecoverWallet.invalid">Введенный вами бумажный ключ недействителен. Пожалуйста, внимательно перепроверьте каждое слово и повторите попытку.</string>
     <!-- Previous button accessibility label -->
@@ -616,14 +616,14 @@
     <string name="RecoveryKeyFlow.rememberToWriteDownReminder">Не забудьте записать эти слова. Вернитесь к предыдущему шагу, если вы забыли это сделать.</string>
     <!-- Instruction displayed when the user is resetting the PIN, which requires the recovery key to be entered -->
     <string name="RecoveryKeyFlow.resetPINInstruction">Пожалуйста, введите ваш ключ восстановления, чтобы сбросить ваш PIN-код.</string>
-    <!-- Assures the user that BRD will keep the user's funds secure. -->
+    <!-- Assures the user that CGift will keep the user's funds secure. -->
     <string name="RecoveryKeyFlow.securityAssurance">Покупайте и торгуйте, зная, что ваши средства защищены лучшей системой безопасности и конфиденциальности в этой сфере.</string>
     <!-- Recommends that the user stores the recovery key in a secure location -->
-    <string name="RecoveryKeyFlow.storeSecurelyRecommendation">Храните ваш ключ в безопасном месте. Только с помощью него вы сможете восстановить ваш кошелек. BRD не хранит его копию.</string>
+    <string name="RecoveryKeyFlow.storeSecurelyRecommendation">Храните ваш ключ в безопасном месте. Только с помощью него вы сможете восстановить ваш кошелек. CGift не хранит его копию.</string>
     <!-- Title for the success page after the recovery key has been set up -->
     <string name="RecoveryKeyFlow.successHeading">Поздравляем! Вы закончили настройку ключа восстановления.</string>
     <!-- Subtitle for the success page after the recovery key has been set up -->
-    <string name="RecoveryKeyFlow.successSubheading">Теперь вы готовы вносить депозит, торговать и покупать криптовалюту из вашего кошелька BRD.</string>
+    <string name="RecoveryKeyFlow.successSubheading">Теперь вы готовы вносить депозит, торговать и покупать криптовалюту из вашего кошелька CGift.</string>
     <!-- Title displayed to the user on the intro screen when unlinking a wallet -->
     <string name="RecoveryKeyFlow.unlinkWallet">Отвяжите ваш кошелек от этого устройства.</string>
     <!-- Subtitle displayed to the user on the intro screen when unlinking a wallet. -->
@@ -653,7 +653,7 @@
     <!-- extimated time -->
     <string name="ReScan.body1">20-45 минут</string>
     <!-- Syncing explanation -->
-    <string name="ReScan.body2">Если транзакция описывается как \"выполненная\" в биткойн-сети, но не в вашем BRD-кошельке.</string>
+    <string name="ReScan.body2">Если транзакция описывается как \"выполненная\" в биткойн-сети, но не в вашем CGift-кошельке.</string>
     <!-- Syncing explanation -->
     <string name="ReScan.body3">Вы несколько раз получили ошибку о том, что транзакция отвергнута.</string>
     <!-- Start Sync button label -->
@@ -669,7 +669,7 @@
     <!-- Rewards view expanded body. -->
     <string name="RewardsView.expandedBody">Узнайте как сэкономить на комиссионных обменах и открыть будущие бонусы.</string>
     <!-- Rewards view expanded title. -->
-    <string name="RewardsView.expandedTitle">Представляем Бонусы BRD.</string>
+    <string name="RewardsView.expandedTitle">Представляем Бонусы CGift.</string>
     <!-- Rewards view title -->
     <string name="RewardsView.normalTitle">Бонусы</string>
     <!-- Scan bitcoin address camera flash toggle -->
@@ -694,11 +694,11 @@
     <!-- Paper Key button title -->
     <string name="SecurityCenter.paperKeyTitle.android">Бумажный ключ</string>
     <!-- PIN button description -->
-    <string name="SecurityCenter.pinDescription">Защищает ваш BRD от несанкционированных пользователей.</string>
+    <string name="SecurityCenter.pinDescription">Защищает ваш CGift от несанкционированных пользователей.</string>
     <!-- PIN button title -->
     <string name="SecurityCenter.pinTitle">6-цифровой PIN-код</string>
     <!-- Touch ID button description -->
-    <string name="SecurityCenter.touchIdDescription">Легко и просто разблокируйте ваш BRD-кошелек и отправляйте суммы, не превышающие ваш лимит на расходы.</string>
+    <string name="SecurityCenter.touchIdDescription">Легко и просто разблокируйте ваш CGift-кошелек и отправляйте суммы, не превышающие ваш лимит на расходы.</string>
     <!-- Touch ID button title -->
     <string name="SecurityCenter.touchIdTitle">Touch ID</string>
     <!-- Security center fingerprint authentication button -->
@@ -720,13 +720,13 @@
     <!-- Balance: $4.00 -->
     <string name="Send.balance">Баланс: %1$s</string>
     <!-- Instructions how to allow the camera access for the app -->
-    <string name="Send.cameraUnavailabeMessage.android">Разрешить доступ к камере в: \"Настройки\" &gt; \"Приложения\" &gt; \"BRD\" &gt; \"Разрешения\"</string>
+    <string name="Send.cameraUnavailabeMessage.android">Разрешить доступ к камере в: \"Настройки\" &gt; \"Приложения\" &gt; \"CGift\" &gt; \"Разрешения\"</string>
     <!-- Permission required to access camera -->
-    <string name="Send.cameraUnavailabeTitle.android">Приложению BRD не разрешен доступ к камере</string>
+    <string name="Send.cameraUnavailabeTitle.android">Приложению CGift не разрешен доступ к камере</string>
     <!-- Camera not allowed message -->
     <string name="Send.cameraunavailableMessage">Перейдите в \"Настройки\", чтобы разрешить доступ к камере.</string>
     <!-- Camera not allowed alert title -->
-    <string name="Send.cameraUnavailableTitle">BRD не имеет разрешения на доступ к камере</string>
+    <string name="Send.cameraUnavailableTitle">CGift не имеет разрешения на доступ к камере</string>
     <!-- Warning when sending to self. -->
     <string name="Send.containsAddress">Место назначения является вашим собственным адресом. Вы не можете отправить деньги самому себе.</string>
     <!-- Could not create transaction alert title -->
@@ -810,7 +810,7 @@
     <!-- Enable segwit. -->
     <string name="Settings.EnableSegwit">Активировать Segwit</string>
     <!-- Are you enjoying bread alert message body -->
-    <string name="Settings.enjoying">Нравится ли вам использовать BRD?</string>
+    <string name="Settings.enjoying">Нравится ли вам использовать CGift?</string>
     <!-- Face ID spending limit label -->
     <string name="Settings.faceIdLimit">Лимит расходов Face ID</string>
     <!-- Redeem the funds stored on this private key. -->
@@ -850,7 +850,7 @@
     <!-- Unlink/delete your wallet from the current device. -->
     <string name="Settings.wipe">Отвязать от этого устройства</string>
     <!-- Share data view body -->
-    <string name="ShareData.body">Помогите нам улучшить BRD, поделившись своими анонимными данными. Такие данные не включают какую-либо финансовую информацию. Мы уважаем вашу финансовую конфиденциальность.</string>
+    <string name="ShareData.body">Помогите нам улучшить CGift, поделившись своими анонимными данными. Такие данные не включают какую-либо финансовую информацию. Мы уважаем вашу финансовую конфиденциальность.</string>
     <!-- Share data header -->
     <string name="ShareData.header">Поделиться данными?</string>
     <!-- Share data switch label. -->
@@ -858,9 +858,9 @@
     <!-- button label -->
     <string name="StartPaperPhrase.againButtonTitle">Выписать бумажный ключ снова</string>
     <!-- Paper key explanation text. -->
-    <string name="StartPaperPhrase.body">Бумажный ключ – это единственный способ восстановить ваш BRD-кошелек в случае потери, кражи, поломки или замены вашего телефона.\n\nМы покажем вам список слов, которые необходимо записать на листе бумаги и хранить в надежном месте.</string>
+    <string name="StartPaperPhrase.body">Бумажный ключ – это единственный способ восстановить ваш CGift-кошелек в случае потери, кражи, поломки или замены вашего телефона.\n\nМы покажем вам список слов, которые необходимо записать на листе бумаги и хранить в надежном месте.</string>
     <!-- Paper key explanation text (Android-version) -->
-    <string name="StartPaperPhrase.Body.Android">Бумажный ключ — это единственный способ восстановить ваш кошелек BRD в случае, если ваш телефон окажется утерян, украден, сломан или обновлен.\n\nБумажный ключ будет также необходим, если вы измените настройки безопасности на вашем устройстве.\n\nМы покажем вам список слов, которые необходимо записать на бумаге и хранить в безопасном месте.</string>
+    <string name="StartPaperPhrase.Body.Android">Бумажный ключ — это единственный способ восстановить ваш кошелек CGift в случае, если ваш телефон окажется утерян, украден, сломан или обновлен.\n\nБумажный ключ будет также необходим, если вы измените настройки безопасности на вашем устройстве.\n\nМы покажем вам список слов, которые необходимо записать на бумаге и хранить в безопасном месте.</string>
     <!-- button label -->
     <string name="StartPaperPhrase.buttonTitle">Выписать бумажный ключ</string>
     <!-- Argument is date; date should be on a new line -->
@@ -914,13 +914,13 @@
     <!-- Fingerprint Is Not Setup -->
     <string name="TouchIdSettings.disabledWarning.title.android">Аутентификация по отпечаткам пальцев не включена</string>
     <!-- Touch Id screen label -->
-    <string name="TouchIdSettings.label">Используйте отпечатки ваших пальцев для разблокирования BRD-кошелька и отправки сумм, не превышающих ваш лимит на расходы.</string>
+    <string name="TouchIdSettings.label">Используйте отпечатки ваших пальцев для разблокирования CGift-кошелька и отправки сумм, не превышающих ваш лимит на расходы.</string>
     <!-- Link Text (see TouchIdSettings.customizeText) -->
     <string name="TouchIdSettings.linkText">Экран лимита расходов Touch ID</string>
     <!-- Spending Limit: b100,000 ($100) -->
     <string name="TouchIdSettings.spendingLimit">Лимит на расходы: %1$s (%2$s)</string>
     <!-- Touch id switch label. -->
-    <string name="TouchIdSettings.switchLabel">Активировать функцию Touch ID для BRD</string>
+    <string name="TouchIdSettings.switchLabel">Активировать функцию Touch ID для CGift</string>
     <!-- Enable fingerprint for this wallet called Bread -->
     <string name="TouchIdSettings.switchLabel.android">Включить аутентификацию по отпечаткам пальцев</string>
     <!-- Touch ID settings view title -->
@@ -971,7 +971,7 @@
     <string name="Transaction.sentTo">отправлено по адресу %1$s</string>
     <!-- eg. Starting balance: $50.00 -->
     <string name="Transaction.starting">Начальный баланс: %1$s</string>
-    <!-- e.g. "[The money you paid was a] Fee for token transfer: BRD" (BRD is the token that was transfered) -->
+    <!-- e.g. "[The money you paid was a] Fee for token transfer: CGift" (CGift is the token that was transfered) -->
     <string name="Transaction.tokenTransfer">Сбор за передачу токена: %1$s</string>
     <!-- Waiting to be confirmed string -->
     <string name="Transaction.waiting">Ожидает подтверждения. Некоторые продавцы требуют подтверждения для выполнения транзакции. Предполагаемое время: 1-2 часа.</string>
@@ -1083,7 +1083,7 @@
     <!-- Instruction to touch the sensor for fingerprint authentication -->
     <string name="UnlockScreen.touchIdInstructions.android">Датчик касания</string>
     <!-- TouchID prompt text -->
-    <string name="UnlockScreen.touchIdPrompt">Разблокируйте ваш BRD-кошелек.</string>
+    <string name="UnlockScreen.touchIdPrompt">Разблокируйте ваш CGift-кошелек.</string>
     <!-- Device authentication body -->
     <string name="UnlockScreen.touchIdPrompt.android">Разблокируйте ваше устройство Android, чтобы продолжить.</string>
     <!-- Unlock with TouchID accessibility label -->
@@ -1093,7 +1093,7 @@
     <!-- Update PIN caption text -->
     <string name="UpdatePin.caption">Запомните этот PIN-код. Если вы его забудете, что не сможете получить доступ к вашим биткойнам.</string>
     <!-- PIN creation info. -->
-    <string name="UpdatePin.createInstruction">Ваш PIN-код будет использоваться для разблокировки кошелька BRD и отправки денег.</string>
+    <string name="UpdatePin.createInstruction">Ваш PIN-код будет использоваться для разблокировки кошелька CGift и отправки денег.</string>
     <!-- Update PIN title -->
     <string name="UpdatePin.createTitle">Задайте PIN-код</string>
     <!-- Update PIN title -->
@@ -1127,7 +1127,7 @@
     <!-- Authorize transaction with touch id message -->
     <string name="VerifyPin.touchIdMessage">Разрешить эту транзакцию</string>
     <!-- 'No wallet' warning for watch app -->
-    <string name="Watch.noWalletWarning">Запустите BRD-приложение для iPhone, чтобы настроить ваш кошелек.</string>
+    <string name="Watch.noWalletWarning">Запустите CGift-приложение для iPhone, чтобы настроить ваш кошелек.</string>
     <!-- Dismiss button label -->
     <string name="Webview.dismiss">Отклонить</string>
     <!-- Webview loading error message -->
@@ -1135,9 +1135,9 @@
     <!-- Updating webview message -->
     <string name="Webview.updating">Идет обновление...</string>
     <!-- Welcome screen text. (?) will be replaced with the help icon users should look for. -->
-    <string name="Welcome.body">Breadwallet сменил свое название на BRD и обзавелся новым дизайном и функциями.\n\nЕсли вам нужна помощь, то ищите иконку (?) в правом верхнем углу большинства экранов.</string>
+    <string name="Welcome.body">Breadwallet сменил свое название на CGift и обзавелся новым дизайном и функциями.\n\nЕсли вам нужна помощь, то ищите иконку (?) в правом верхнем углу большинства экранов.</string>
     <!-- Top title of welcome screen -->
-    <string name="Welcome.title">Добро пожаловать в BRD!</string>
+    <string name="Welcome.title">Добро пожаловать в CGift!</string>
     <!-- Wipe wallet alert message -->
     <string name="WipeWallet.alertMessage">Вы действительно хотите удалить этот кошелек?</string>
     <!-- Wipe wallet alert title -->
@@ -1151,7 +1151,7 @@
     <!-- Instructions for unlinking the wallet -->
     <string name="WipeWallet.startMessage">Отвязать ваш кошелек, чтобы удалить его с этого устройства. Как только вы отвяжете этот кошелек, вы сможете открыть новый кошелек или восстановить другой на этом устройстве.</string>
     <!-- Start wipe wallet view warning -->
-    <string name="WipeWallet.startWarning">Вы больше не сможете получить доступ к текущему кошельку BRD с этого устройства. Ваш баланс останется на этой фразе.</string>
+    <string name="WipeWallet.startWarning">Вы больше не сможете получить доступ к текущему кошельку CGift с этого устройства. Ваш баланс останется на этой фразе.</string>
     <!-- Unlink this wallet from this device. -->
     <string name="WipeWallet.title">Отвязать кошелек</string>
     <!-- Wipe wallet button title -->
