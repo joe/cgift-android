@@ -2,6 +2,7 @@ package com.breadwallet.tools.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.breadwallet.R;
@@ -134,12 +136,12 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
         if (getItemViewType(position) == VIEW_TYPE_WALLET) {
             Wallet wallet = mWallets.get(position);
             DecoratedWalletItemViewHolder decoratedHolderView = (DecoratedWalletItemViewHolder) holderView;
-            if (wallet.getCurrencyCode().equalsIgnoreCase(WalletTokenManager.BRD_CURRENCY_CODE)
-                    && !BRSharedPrefs.getRewardsAnimationShown(mContext)) {
-                decoratedHolderView.mShimmerLayout.startShimmerAnimation();
-            } else {
-                decoratedHolderView.mShimmerLayout.stopShimmerAnimation();
-            }
+//            if (wallet.getCurrencyCode().equalsIgnoreCase(WalletTokenManager.BRD_CURRENCY_CODE)
+//                    && !BRSharedPrefs.getRewardsAnimationShown(mContext)) {
+//                decoratedHolderView.mShimmerLayout.startShimmerAnimation();
+//            } else {
+//                decoratedHolderView.mShimmerLayout.stopShimmerAnimation();
+//            }
             String name = wallet.getName();
             String currencyCode = wallet.getCurrencyCode();
 
@@ -197,13 +199,12 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
 
             WalletUiConfiguration uiConfiguration = WalletsMaster.getInstance().getWalletByIso(mContext, wallet.getCurrencyCode()).getUiConfiguration();
             String startColor = uiConfiguration.getStartColor();
-            String endColor = uiConfiguration.getEndColor();
+            //String endColor = mContext.getColor(R.color.black_trans);
             Drawable drawable = mContext.getResources().getDrawable(R.drawable.crypto_card_shape, null).mutate();
 
             if (TokenUtil.isTokenSupported(currencyCode)) {
                 // Create gradient if 2 colors exist.
-                ((GradientDrawable) drawable).setColors(new int[]{Color.parseColor(startColor),
-                        Color.parseColor(endColor == null ? startColor : endColor)});
+                ((GradientDrawable) drawable).setColors(new int[]{Color.parseColor(startColor), mContext.getColor(R.color.black_trans)});
                 ((GradientDrawable) drawable).setOrientation(GradientDrawable.Orientation.LEFT_RIGHT);
                 decoratedHolderView.mParent.setBackground(drawable);
                 setWalletItemColors(decoratedHolderView, R.dimen.token_background_no_alpha);
@@ -265,7 +266,7 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
      * {@link RecyclerView.ViewHolder} for each wallet in the home screen wallet list.
      */
     private class DecoratedWalletItemViewHolder extends WalletItemViewHolder {
-        private ShimmerLayout mShimmerLayout;
+        private LinearLayout mShimmerLayout;
         private BaseTextView mWalletName;
         private BaseTextView mTradePrice;
         private BaseTextView mWalletBalanceFiat;
@@ -279,7 +280,7 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
 
         private DecoratedWalletItemViewHolder(View view) {
             super(view);
-            mShimmerLayout = (ShimmerLayout) view;
+            mShimmerLayout = (LinearLayout) view;
             mWalletName = view.findViewById(R.id.wallet_name);
             mTradePrice = view.findViewById(R.id.wallet_trade_price);
             mWalletBalanceFiat = view.findViewById(R.id.wallet_balance_fiat);

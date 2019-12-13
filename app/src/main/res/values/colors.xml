@@ -61,7 +61,7 @@
     <item name="pin_pad_text" type="color">#141233</item>
     <item name="extra_light_blue_background" type="color">#f2f2f2</item>
 
-    <item name="button_primary_normal" type="color">#29ABE2</item>
+    <item name="button_primary_normal" type="color">#fff</item>
     <item name="button_secondary" type="color">#F5F8FA</item>
     <item name="button_secondary_text" type="color">#232426</item>
     <item name="confirmation_box" type="color">#141233</item>
@@ -126,7 +126,7 @@
     <color name="button_gradient_end_color">#F29500</color>
     <color name="button_add_wallet_background">#444b77f3</color>
     <color name="button_cancel_add_wallet_background">#44E7AA41</color>
-    <color name="button_add_wallet_text">#4b77f3</color>
+    <color name="button_add_wallet_text">#fff</color>
     <color name="button_cancel_add_wallet_text">#E7AA41</color>
     <color name="text_total_assets_label">#bfffffff</color>
     <color name="pin_pad_delete">#fff</color>
@@ -144,7 +144,7 @@
     <color name="spend_limit_list_divider_color_dark">#b3c0c8</color>
     <color name="unlink_header_start">#97B5ED</color>
     <color name="unlink_header_end">#779DE6</color>
-    <color name="prompt_action_button">#5B6DEE</color>
+    <color name="prompt_action_button">#FAD14F</color>
 
     // Link wallet screen
     <color name="link_wallet_subtitle_dark">#FAA43A</color>

@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:drawablePadding="16dp"
         android:text="@string/TokenList.addTitle"
-        android:textColor="@color/white"
+        android:textColor="@color/light_gray"
         android:layout_marginBottom="16dp"
         android:textSize="16sp"/>
 

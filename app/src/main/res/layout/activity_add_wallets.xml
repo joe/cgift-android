@@ -9,7 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@android:color/transparent">
+        android:background="@color/secondary_background">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -59,7 +59,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/search_edit"
-        android:layout_marginTop="2dp" />
+        android:layout_marginTop="2dp"
+        android:background="@color/black" />
 
 
 </RelativeLayout>

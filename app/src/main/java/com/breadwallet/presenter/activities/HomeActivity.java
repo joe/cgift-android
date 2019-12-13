@@ -131,7 +131,9 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
             overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
         });
         mWalletRecycler.setLayoutManager(new LinearLayoutManager(this));
-        mWalletRecycler.addOnItemTouchListener(new RecyclerItemClickListener(this, mWalletRecycler, new RecyclerItemClickListener.OnItemClickListener() {
+        mWalletRecycler.addOnItemTouchListener(new RecyclerItemClickListener(this,
+                mWalletRecycler,
+                new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position, float x, float y) {
                 if (position >= mAdapter.getItemCount() || position < 0) {
