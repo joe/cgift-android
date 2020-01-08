@@ -40,6 +40,9 @@ import android.widget.TextView;
 
 import com.breadwallet.BuildConfig;
 import com.breadwallet.R;
+import com.breadwallet.api.CgiftAPIClient;
+import com.breadwallet.api.CgiftAPI;
+import com.breadwallet.api.RedeemCardRequest;
 import com.breadwallet.model.Experiments;
 import com.breadwallet.presenter.activities.settings.SettingsActivity;
 import com.breadwallet.presenter.activities.util.BRActivity;
@@ -63,9 +66,12 @@ import com.breadwallet.ui.wallet.WalletActivity;
 import com.breadwallet.wallet.wallets.bitcoin.WalletBitcoinManager;
 import com.breadwallet.wallet.wallets.ethereum.WalletTokenManager;
 import com.platform.HTTPServer;
+import com.trello.rxlifecycle.android.ActivityEvent;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import rx.schedulers.Schedulers;
 
 /**
  * Created by byfieldj on 1/17/18.
@@ -167,10 +173,10 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
         }));
         processIntentData(getIntent());
 
-        ImageView buyBell = findViewById(R.id.buy_bell);
-        boolean isBellNeeded = ExperimentsRepositoryImpl.INSTANCE.isExperimentActive(Experiments.BUY_NOTIFICATION)
-                && CurrencyUtils.isBuyNotificationNeeded(this);
-        buyBell.setVisibility(isBellNeeded ? View.VISIBLE : View.INVISIBLE);
+//        ImageView buyBell = findViewById(R.id.buy_bell);
+//        boolean isBellNeeded = ExperimentsRepositoryImpl.INSTANCE.isExperimentActive(Experiments.BUY_NOTIFICATION)
+//                && CurrencyUtils.isBuyNotificationNeeded(this);
+//        buyBell.setVisibility(isBellNeeded ? View.VISIBLE : View.INVISIBLE);
 
         mAdapter = new WalletListAdapter(this);
         mWalletRecycler.setAdapter(mAdapter);

@@ -137,23 +137,23 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
-                        android:src="@drawable/ic_menu_buy_sell"
+                        android:src="@drawable/redeem"
                         android:tint="@color/white"
                         app:layout_constraintBottom_toTopOf="@+id/buy_text_view"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/buy_bell"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginBottom="12dp"
-                        android:src="@drawable/ic_buy_bell"
-                        app:layout_constraintBottom_toTopOf="@+id/buy_text_view"
-                        app:layout_constraintStart_toStartOf="@+id/imageView4" />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/buy_bell"-->
+<!--                        android:layout_width="20dp"-->
+<!--                        android:layout_height="20dp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_marginStart="12dp"-->
+<!--                        android:layout_marginBottom="12dp"-->
+<!--                        android:src="@drawable/redeem"-->
+<!--                        app:layout_constraintBottom_toTopOf="@+id/buy_text_view"-->
+<!--                        app:layout_constraintStart_toStartOf="@+id/imageView4" />-->
 
                     <com.breadwallet.presenter.customviews.BaseTextView
                         android:id="@+id/buy_text_view"
@@ -163,7 +163,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
                         android:gravity="bottom"
-                        android:text="@string/HomeScreen.buy"
+                        android:text="@string/HomeScreen.buyAndSell"
                         android:textColor="@color/white"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -212,7 +212,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="4dp"
-                        android:src="@drawable/ic_menu_more"
+                        android:src="@drawable/menu"
                         android:tint="@color/white" />
 
                     <com.breadwallet.presenter.customviews.BaseTextView
