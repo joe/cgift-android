@@ -120,15 +120,23 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
         Map<String, String> eventAttributes = new HashMap<>();
         eventAttributes.put(EventUtils.EVENT_ATTRIBUTE_SHOW, Boolean.toString(showBuyAndSell));
         EventUtils.pushEvent(EventUtils.EVENT_EXPERIMENT_BUY_SELL_MENU_BUTTON, eventAttributes);
+//        mBuyLayout.setOnClickListener(view -> {
+//            Map<String, String> clickAttributes = new HashMap<>();
+//            eventAttributes.put(EventUtils.EVENT_ATTRIBUTE_BUY_AND_SELL, Boolean.toString(showBuyAndSell));
+//            EventUtils.pushEvent(EventUtils.EVENT_HOME_DID_TAP_BUY, clickAttributes);
+//            String url = String.format(BRConstants.CURRENCY_PARAMETER_STRING_FORMAT,
+//                    HTTPServer.getPlatformUrl(HTTPServer.URL_BUY),
+//                    WalletBitcoinManager.getInstance(HomeActivity.this).getCurrencyCode());
+//            UiUtils.startPlatformBrowser(HomeActivity.this, url);
+//        });
+
         mBuyLayout.setOnClickListener(view -> {
-            Map<String, String> clickAttributes = new HashMap<>();
-            eventAttributes.put(EventUtils.EVENT_ATTRIBUTE_BUY_AND_SELL, Boolean.toString(showBuyAndSell));
-            EventUtils.pushEvent(EventUtils.EVENT_HOME_DID_TAP_BUY, clickAttributes);
-            String url = String.format(BRConstants.CURRENCY_PARAMETER_STRING_FORMAT,
-                    HTTPServer.getPlatformUrl(HTTPServer.URL_BUY),
-                    WalletBitcoinManager.getInstance(HomeActivity.this).getCurrencyCode());
-            UiUtils.startPlatformBrowser(HomeActivity.this, url);
+            Intent intent = new Intent(HomeActivity.this, RedeemActivity.class);
+            intent.putExtra(SettingsActivity.EXTRA_MODE, SettingsActivity.MODE_SETTINGS);
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
         });
+
         //mTradeLayout.setOnClickListener(view -> UiUtils.startPlatformBrowser(HomeActivity.this, HTTPServer.getPlatformUrl(HTTPServer.URL_TRADE)));
         mMenuLayout.setOnClickListener(view -> {
             Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);

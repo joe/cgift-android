@@ -47,6 +47,7 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
 
     private static final int VIEW_TYPE_WALLET = 0;
     private static final int VIEW_TYPE_ADD_WALLET = 1;
+    private static final int VIEW_TYPE_REDEEM_CARD = 2;
     private final Context mContext;
     private List<Wallet> mWallets;
 
@@ -219,8 +220,8 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
                 setWalletItemColors(decoratedHolderView, R.dimen.token_background_with_alpha);
             }
         } else {
-            BaseTextView addWalletLabel = holderView.itemView.findViewById(R.id.add_wallets);
-            addWalletLabel.setText("+ " + mContext.getString(R.string.TokenList_addTitle));
+//            BaseTextView addWalletLabel = holderView.itemView.findViewById(R.id.add_wallets);
+//            addWalletLabel.setText("+ " + mContext.getString(R.string.TokenList_addTitle));
         }
     }
 
@@ -249,7 +250,7 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
     @Override
     public int getItemCount() {
         // Number of wallets plus 1 for the 'Add Wallets' item.
-        return mWallets.size() + 1;
+        return mWallets.size();
     }
 
     /**
