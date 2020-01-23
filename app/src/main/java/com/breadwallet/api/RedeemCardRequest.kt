@@ -11,18 +11,18 @@ class RedeemCardRequest {
 
     @Expose
     @SerializedName("card_number")
-    var cardNumber: String? = null
+    var cardNumber: String = ""
 
     @Expose
     @SerializedName("pin")
-    var pin: String? = null
+    var pin: String = ""
 
     @Expose
     @SerializedName("wallet_address")
-    var walletAddress: String? = null
+    var walletAddress: String = ""
 
     @Expose
     @SerializedName("destination_currency")
-    var destinationCurrency: String? = null
+    var destinationCurrency: String = ""
 
 }

@@ -7,54 +7,53 @@
     android:layout_height="match_parent"
     tools:context="com.breadwallet.presenter.activities.RedeemActivity">
 
+    <RelativeLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
-            android:id="@+id/topBar"
+        <ImageButton
+            android:id="@+id/close_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_close_blue_24dp"
+            android:visibility="visible"
+            android:clickable="true"
+            android:onClick="close" />
+
+        <View
+            android:id="@+id/close_view"
+            android:layout_width="44dp"
+            android:layout_height="34dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="0dp"
+            android:layout_centerVertical="true"
+            android:visibility="visible"
+            android:clickable="true"
+            android:onClick="close" />
+
+        <com.breadwallet.presenter.customviews.BaseTextView
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/bread_margin"
+            android:text="Redeem Gift Card"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            app:brdFont="@string/Font.CircularPro_Bold" />
 
-            <ImageButton
-                android:id="@+id/close_button"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:layout_centerVertical="true"
-                android:background="@drawable/ic_close_blue_24dp"
-                android:visibility="visible"
-                android:clickable="true"
-                android:onClick="close" />
-
-            <View
-                android:id="@+id/close_view"
-                android:layout_width="44dp"
-                android:layout_height="34dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="0dp"
-                android:layout_centerVertical="true"
-                android:visibility="visible"
-                android:clickable="true"
-                android:onClick="close" />
-
-            <com.breadwallet.presenter.customviews.BaseTextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="@dimen/bread_margin"
-                android:text="Redeem Gift Card"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                app:brdFont="@string/Font.CircularPro_Bold" />
-
-        </RelativeLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/cardNumberRow"
@@ -67,26 +66,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topBar">
 
-        <View
+        <com.breadwallet.presenter.customviews.AutoResizeTextView
             android:id="@+id/scan2"
-            android:layout_width="44dp"
-            android:layout_height="34dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="4dp"
-            android:clickable="true"
-            android:onClick="close"
-            android:visibility="visible" />
+            android:layout_marginStart="8dp"
+            android:text="Card Number"
+            android:textColor="@color/light_gray"
+            android:textSize="16sp"
+            android:visibility="visible"
+            app:brdFont="@string/Font.CircularPro_Book" />
 
-        <View
+        <com.breadwallet.presenter.customviews.BREdit
+            android:id="@+id/cardNumber"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/scan2"
+            android:layout_alignStart="@+id/scan2"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="7dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:inputType="number" />
+
+        <Button
             android:id="@+id/scan3"
-            android:layout_width="44dp"
-            android:layout_height="34dp"
+            android:layout_width="54dp"
+            android:layout_height="39dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="16dp"
             android:clickable="true"
-            android:onClick="close"
+            android:text="Scan"
+            android:textColor="@color/light_gray"
+            android:textSize="14sp"
+            style="@style/CircularProFontButton"
+            android:background="@drawable/redeem_scan_button"
+            android:onClick="scan"
             android:visibility="visible" />
 
     </RelativeLayout>
@@ -113,26 +131,71 @@
         android:id="@+id/cardPinRow"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:gravity="center_horizontal"
+        android:gravity="left"
         android:orientation="horizontal"
         android:background="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider">
 
+        <com.breadwallet.presenter.customviews.AutoResizeTextView
+            android:id="@+id/pin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:text="PIN"
+            android:textColor="@color/light_gray"
+            android:textSize="16sp"
+            android:visibility="visible"
+            app:brdFont="@string/Font.CircularPro_Book" />
+
+        <com.breadwallet.presenter.customviews.BREdit
+            android:id="@+id/pinNumber"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pin"
+            android:layout_alignStart="@+id/pin"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="7dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:inputType="number" />
 
     </RelativeLayout>
-
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/redeem_wallet_list"
         android:layout_width="match_parent"
         android:layout_height="106dp"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal"
+        android:paddingStart="0dp"
+        android:paddingEnd="200dp"
+        android:clipToPadding="false"
         android:layout_centerVertical="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardPinRow"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/cardPinRow" />
+
+    <Button
+        android:id="@+id/redeemButton"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:text="Redeem Bitcoin"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        style="@style/CircularProFontButton"
+        android:onClick="redeem"
+        android:visibility="visible"
+        android:background="@color/prompt_action_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

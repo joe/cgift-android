@@ -133,4 +133,9 @@
     <style name="AppTheme.Dark.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.Dark.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="CircularProFontButton">
+        <item name="android:fontFamily">@string/Font.CircularPro_Bold</item>
+    </style>
+
 </resources>
