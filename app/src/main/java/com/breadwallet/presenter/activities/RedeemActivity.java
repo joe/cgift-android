@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.breadwallet.R;
 
@@ -18,33 +18,50 @@ import com.breadwallet.api.RedeemCardRequest;
 import com.breadwallet.presenter.activities.util.BRActivity;
 import com.breadwallet.presenter.viewmodels.HomeViewModel;
 import com.breadwallet.tools.adapter.RedeemListAdapter;
+import com.breadwallet.tools.animation.UiUtils;
 import com.breadwallet.tools.listeners.RecyclerItemClickListener;
-import com.breadwallet.tools.manager.BRSharedPrefs;
+import com.breadwallet.tools.manager.AppEntryPointHandler;
+import com.breadwallet.tools.manager.InternetManager;
 import com.breadwallet.tools.util.EventUtils;
-import com.breadwallet.ui.wallet.WalletActivity;
-import com.breadwallet.wallet.wallets.ethereum.WalletTokenManager;
+import com.breadwallet.tools.util.Utils;
+import com.jakewharton.rxbinding2.widget.RxTextView;
 
+//import rx.Observable;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.reactivex.observers.DisposableObserver;
 import rx.android.schedulers.AndroidSchedulers;
+//import rx.functions.Function;
 import rx.schedulers.Schedulers;
+
+import io.reactivex.Observable;
+import io.reactivex.functions.BiFunction;
+import io.reactivex.functions.Function;
+
 
 public class RedeemActivity extends BRActivity {
 
     private static final String TAG = RedeemActivity.class.getName();
     private EditText mCode;
     private EditText mPin;
+    private Button mRedeemButton;
     private RecyclerView mRedeemRecycler;
     private RedeemListAdapter mAdapter;
     private HomeViewModel mViewModel;
 
+    Observable<Boolean> observable;
+    public static final String REDEEM_EXTRA_DATA = "com.breadwallet.presenter.activities.RedeemActivity.REDEEM_EXTRA_DATA";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_redeem);
         mCode = findViewById(R.id.cardNumber);
         mPin = findViewById(R.id.pinNumber);
+        mRedeemButton = findViewById(R.id.redeemButton);
 
         mRedeemRecycler = findViewById(R.id.redeem_wallet_list);
         mRedeemRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -91,6 +108,47 @@ public class RedeemActivity extends BRActivity {
                     public void onLongItemClick(View view, int position) {
                     }
                 }));
+
+        Observable<String> code = RxTextView.textChanges(mCode).skip(1).map(new Function<CharSequence, String>() {
+            @Override
+            public String apply(CharSequence charSequence) throws Exception {
+                return charSequence.toString();
+            }
+        });
+
+        Observable<String> pin = RxTextView.textChanges(mPin).skip(1).map(new Function<CharSequence, String>() {
+            @Override
+            public String apply(CharSequence charSequence) throws Exception {
+                return charSequence.toString();
+            }
+        });
+
+        observable = Observable.combineLatest(code, pin, new BiFunction<String, String, Boolean>() {
+            @Override
+            public Boolean apply(String s, String s2) throws Exception {
+                return isValidForm(s, s2);
+            }
+        });
+
+        observable.subscribe(new DisposableObserver<Boolean>() {
+            @Override
+            public void onNext(Boolean aBoolean) {
+                updateButton(aBoolean);
+            }
+
+            @Override
+            public void onError(Throwable e) {}
+
+            @Override
+            public void onComplete() {}
+        });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onNewIntent(getIntent());
     }
 
     @Override
@@ -99,8 +157,30 @@ public class RedeemActivity extends BRActivity {
         overridePendingTransition(R.anim.empty_300, R.anim.exit_to_bottom);
     }
 
-    public void scan(View v) {
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        String data = intent.getStringExtra(REDEEM_EXTRA_DATA);
+        mCode.setText(data, TextView.BufferType.NORMAL);
+//        let match = content.range(of: "[1-9]{1}[0-9]{11,15}",
+//                options: .regularExpression,
+//                range: nil,
+//                locale: nil)
+    }
 
+    public void updateButton(boolean valid) {
+        mRedeemButton.setEnabled(valid);
+        mRedeemButton.setAlpha(valid ? 1 : (float).5);
+    }
+
+    public boolean isValidForm(String code, String pin) {
+        boolean validCode = !code.isEmpty() && code.length()>1;
+        boolean validPin = !pin.isEmpty() && pin.length()>3;
+        return validCode && validPin;
+    }
+
+    public void scan(View v) {
+        UiUtils.openScanner(this);
     }
 
     public void redeem(View v) {
@@ -128,11 +208,6 @@ public class RedeemActivity extends BRActivity {
                             Log.d("REDEEM", String.format("ERROR"));
                         }
                 );
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
     }
 
 }
