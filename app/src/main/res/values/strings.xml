@@ -17,7 +17,7 @@
     <!-- About screen twitter label -->
     <string name="About.twitter">Twitter</string>
     <!-- About screen wallet ID label -->
-    <string name="About.walletID">CGift Rewards ID</string>
+    <string name="About.walletID">Offered by cgift.</string>
     <!-- Close modal button accessibility label -->
     <string name="AccessibilityLabels.close">Close</string>
     <!-- Support center accessibiliy label -->

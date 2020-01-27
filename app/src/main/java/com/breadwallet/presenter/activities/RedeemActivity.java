@@ -29,6 +29,7 @@ import com.jakewharton.rxbinding2.widget.RxTextView;
 //import rx.Observable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import io.reactivex.observers.DisposableObserver;
 import rx.android.schedulers.AndroidSchedulers;
@@ -161,11 +162,10 @@ public class RedeemActivity extends BRActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         String data = intent.getStringExtra(REDEEM_EXTRA_DATA);
-        mCode.setText(data, TextView.BufferType.NORMAL);
-//        let match = content.range(of: "[1-9]{1}[0-9]{11,15}",
-//                options: .regularExpression,
-//                range: nil,
-//                locale: nil)
+        data = "811111111199999";
+        if (Pattern.matches("[1-9]{1}[0-9]{11,15}", data)) {
+            mCode.setText(data, TextView.BufferType.NORMAL);
+        }
     }
 
     public void updateButton(boolean valid) {
