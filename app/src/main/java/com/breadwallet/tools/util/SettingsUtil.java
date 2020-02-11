@@ -227,13 +227,12 @@ public final class SettingsUtil {
 
     public static List<BRSettingsItem> getSecuritySettings(final Activity activity) {
         List<BRSettingsItem> items = new ArrayList<>();
-        items.add(new BRSettingsItem(activity.getString(R.string.TouchIdSettings_switchLabel_android), "", new View.OnClickListener() {
+        items.add(new BRSettingsItem(activity.getString(R.string.Settings_wipe), "", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity, FingerprintActivity.class);
+                Intent intent = new Intent(activity, UnlinkActivity.class);
                 activity.startActivity(intent);
                 activity.overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
-
             }
         }, false, 0));
         items.add(new BRSettingsItem(activity.getString(R.string.UpdatePin_updateTitle), "", new View.OnClickListener() {
@@ -246,6 +245,18 @@ public final class SettingsUtil {
                 activity.overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
             }
         }, false, 0));
+
+        // ToDo: Face ID detection? or touch id?
+
+//        items.add(new BRSettingsItem(activity.getString(R.string.TouchIdSettings_switchLabel_android), "", new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(activity, FingerprintActivity.class);
+//                activity.startActivity(intent);
+//                activity.overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+//
+//            }
+//        }, false, 0));
         items.add(new BRSettingsItem(activity.getString(R.string.SecurityCenter_paperKeyTitle_android), "", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -253,14 +264,6 @@ public final class SettingsUtil {
                 intent.putExtra(WriteDownActivity.EXTRA_VIEW_REASON, WriteDownActivity.ViewReason.SETTINGS.getValue());
                 activity.startActivity(intent);
                 activity.overridePendingTransition(R.anim.enter_from_bottom, R.anim.fade_down);
-            }
-        }, false, 0));
-        items.add(new BRSettingsItem(activity.getString(R.string.Settings_wipe), "", new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(activity, UnlinkActivity.class);
-                activity.startActivity(intent);
-                activity.overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
             }
         }, false, 0));
         return items;

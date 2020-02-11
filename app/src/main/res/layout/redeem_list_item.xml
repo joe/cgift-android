@@ -13,8 +13,7 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/redeem_card"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/wallet_list_row_height"
-        android:background="@drawable/redeem_card_shape" >
+        android:layout_height="@dimen/wallet_list_row_height" >
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/icon_container"

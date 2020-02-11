@@ -692,7 +692,7 @@
  * to not break existing client code. -->
     <string name="SecurityCenter.paperKeyTitle">Recovery Key</string>
     <!-- Paper Key button title -->
-    <string name="SecurityCenter.paperKeyTitle.android">Paper Key</string>
+    <string name="SecurityCenter.paperKeyTitle.android">Recovery Key</string>
     <!-- PIN button description -->
     <string name="SecurityCenter.pinDescription">Protects your CGift from unauthorized users.</string>
     <!-- PIN button title -->
@@ -848,7 +848,7 @@
     <!-- Wallet Settings section header -->
     <string name="Settings.wallet">Wallets</string>
     <!-- Unlink/delete your wallet from the current device. -->
-    <string name="Settings.wipe">Unlink from this device</string>
+    <string name="Settings.wipe">Unlink from this device.</string>
     <!-- Share data view body -->
     <string name="ShareData.body">Help improve CGift by sharing your anonymous data with us. This does not include any financial information. We respect your financial privacy.</string>
     <!-- Share data header -->
@@ -858,7 +858,7 @@
     <!-- button label -->
     <string name="StartPaperPhrase.againButtonTitle">Write Down Paper Key Again</string>
     <!-- Paper key explanation text. -->
-    <string name="StartPaperPhrase.body">Your paper key is the only way to restore your CGift if your phone is lost, stolen, broken, or upgraded.\n\nWe will show you a list of words to write down on a piece of paper and keep safe.</string>
+    <string name="StartPaperPhrase.body">Generate your private reovery key</string>
     <!-- Paper key explanation text (Android-version) -->
     <string name="StartPaperPhrase.Body.Android">Your paper key is the only way to restore your CGift if your phone is lost, stolen, broken, or upgraded.\n\nYour paper key is also required if you change the security settings on your device.\n\nWe will show you a list of words to write down on a piece of paper and keep safe.</string>
     <!-- button label -->
@@ -1119,7 +1119,7 @@
     <!-- Copy wallet addresses alert button label -->
     <string name="URLHandling.copy">Copy</string>
     <!-- Verify PIN for transaction view body -->
-    <string name="VerifyPin.authorize">Please enter your PIN to authorize this transaction.</string>
+    <string name="VerifyPin.authorize">Please enter your PIN to continue.</string>
     <!-- Verify PIN view body -->
     <string name="VerifyPin.continueBody">Please enter your PIN to continue.</string>
     <!-- Verify PIN view title -->
@@ -1149,9 +1149,9 @@
     <!-- Enter phrase to wipe wallet instruction. (Important to explain it is the CURRENT [this wallet's] paper key that needs to be entered). -->
     <string name="WipeWallet.instruction">To start a new wallet or restore an existing wallet, you must first erase the wallet that is currently installed. To continue, enter the current wallet\'s Paper Key.</string>
     <!-- Instructions for unlinking the wallet -->
-    <string name="WipeWallet.startMessage">Starting or recovering another wallet allows you to access and manage a different CGift wallet on this device.</string>
+    <string name="WipeWallet.startMessage">Unlink your wallet from this device.</string>
     <!-- Start wipe wallet view warning -->
-    <string name="WipeWallet.startWarning">Your current wallet will be removed from this device. If you wish to restore it in the future, you will need to enter your Paper Key.</string>
+    <string name="WipeWallet.startWarning">Start a new wallet by unlinking your device from the currently installed wallet.</string>
     <!-- Unlink this wallet from this device. -->
     <string name="WipeWallet.title">Start or Recover Another Wallet</string>
     <!-- Wipe wallet button title -->
@@ -1217,5 +1217,6 @@
     <string name="Wallet.one_year">1y</string>
     <string name="Wallet.three_years">3y</string>
     <string name="title_activity_redeem">RedeemActivity</string>
+    <string name="StartPaperPhrase.body.more">This key is required to recover your money if you upgrade or lose your phone.</string>
 
 </resources>

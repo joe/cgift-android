@@ -46,6 +46,7 @@ public class RedeemListAdapter extends RecyclerView.Adapter<RedeemListAdapter.Wa
     private static final int VIEW_TYPE_REDEEM_CARD = 2;
     private final Context mContext;
     private List<Wallet> mWallets;
+    public List<View>itemViewList = new ArrayList<>();
 
     /**
      * Instantiates the adapter with an empty list of wallets.
@@ -82,6 +83,22 @@ public class RedeemListAdapter extends RecyclerView.Adapter<RedeemListAdapter.Wa
         if (viewType == VIEW_TYPE_WALLET) {
             // Inflate wallet view
             convertView = inflater.inflate(R.layout.redeem_list_item, parent, false);
+            //final WalletItemViewHolder myViewHolder = new WalletItemViewHolder(convertView);
+            itemViewList.add(convertView);
+//            convertView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    for(View tempItemView : itemViewList) {
+//                        /** navigate through all the itemViews and change color
+//                         of selected view to colorSelected and rest of the views to colorDefault **/
+//                        if(itemViewList.get(myViewHolder.getAdapterPosition()) == tempItemView) {
+//                            tempItemView.setBackgroundResource(R.drawable.redeem_card_shape);
+//                        } else {
+//                            tempItemView.setBackgroundResource(R.color.black_trans);
+//                        }
+//                    }
+//                }
+//            });
             return new RedeemListAdapter.DecoratedWalletItemViewHolder(convertView);
         } else {
             throw new IllegalArgumentException("Invalid type: " + viewType);
@@ -259,11 +276,11 @@ public class RedeemListAdapter extends RecyclerView.Adapter<RedeemListAdapter.Wa
     /**
      * {@link RecyclerView.ViewHolder} for each wallet in the home screen wallet list.
      */
-    private class DecoratedWalletItemViewHolder extends RedeemListAdapter.WalletItemViewHolder {
+    public class DecoratedWalletItemViewHolder extends RedeemListAdapter.WalletItemViewHolder {
         private LinearLayout mShimmerLayout;
         private BaseTextView mWalletName;
         private BaseTextView mTradePrice;
-        private ViewGroup mParent;
+        public ViewGroup mParent;
         private ImageView mLogoIcon;
         private BaseTextView mIconLetter;
         //private BaseTextView mPriceChange;

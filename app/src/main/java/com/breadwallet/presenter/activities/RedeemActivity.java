@@ -2,13 +2,21 @@ package com.breadwallet.presenter.activities;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.breadwallet.R;
@@ -65,7 +73,13 @@ public class RedeemActivity extends BRActivity {
         mRedeemButton = findViewById(R.id.redeemButton);
 
         mRedeemRecycler = findViewById(R.id.redeem_wallet_list);
-        mRedeemRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false) {
+            @Override
+            public boolean canScrollHorizontally() {
+                return false;
+            }
+        };
+        mRedeemRecycler.setLayoutManager(linearLayoutManager);
         mAdapter = new RedeemListAdapter(this);
         mRedeemRecycler.setAdapter(mAdapter);
 
@@ -80,24 +94,37 @@ public class RedeemActivity extends BRActivity {
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position, float x, float y) {
-                        if (position >= mAdapter.getItemCount() || position < 0) {
-                            return;
-                        }
-//                        if (mAdapter.getItemViewType(position) == 0) {
-//                            String currencyCode = mAdapter.getItemAt(position).getCurrencyCode();
-//                            BRSharedPrefs.putCurrentWalletCurrencyCode(RedeemActivity.this, currencyCode);
-//                            // Use BrdWalletActivity to show rewards view and animation if BRD and not shown yet.
-//                            if (WalletTokenManager.BRD_CURRENCY_CODE.equalsIgnoreCase(currencyCode)) {
-//                                if (!BRSharedPrefs.getRewardsAnimationShown(RedeemActivity.this)) {
-//                                    Map<String, String> attributes = new HashMap<>();
-//                                    attributes.put(EventUtils.EVENT_ATTRIBUTE_CURRENCY, WalletTokenManager.BRD_CURRENCY_CODE);
-//                                    EventUtils.pushEvent(EventUtils.EVENT_REWARDS_OPEN_WALLET, attributes);
+//                        if (position >= mAdapter.getItemCount() || position < 0) {
+//                            return;
+//                        }
+                         //if (mAdapter.getItemViewType(position) == 0) {
+                            String currencyCode = mAdapter.getItemAt(position).getCurrencyCode();
+                            Log.d(TAG, currencyCode);
+
+                            //for (LinearLayout ll : mAdapter.itemViewList) {
+                                //ll.setBackgroundResource(R.drawable.redeem_card_shape);
+                                //GradientDrawable drawable = (GradientDrawable)ll.getBackground();
+                                //drawable.setStroke(3, getResources().getColor(R.color.white));
+                                //gradientDrawable.setStroke(Utils.dpToPx(getActivity(),2), Color.WHITE, 10, 10);
+                            //}
+                            for(View tempItemView : mAdapter.itemViewList) {
+                                Drawable drawable = getResources()
+                                        .getDrawable(R.drawable.redeem_card_shape, null)
+                                        .mutate();
+                                RedeemListAdapter.DecoratedWalletItemViewHolder decoratedHolderView = (RedeemListAdapter.DecoratedWalletItemViewHolder)mRedeemRecycler.findViewHolderForAdapterPosition(position);
+                                //if(v == tempItemView) {
+                                ((GradientDrawable) drawable).setStroke(4, getResources().getColor(R.color.white));
+                                    //GradientDrawable drawable = (GradientDrawable)v.getBackground();
+                                    //drawable.setStroke(3, getResources().getColor(R.color.white));
+                                decoratedHolderView.mParent.setBackground(drawable);
+//                                } else {
+//                                    //((GradientDrawable) drawable).setStroke(1, getResources().getColor(R.color.black_trans));
+//                                    GradientDrawable drawable = (GradientDrawable)v.getBackground();
+//                                    drawable.setStroke(1, getResources().getColor(R.color.black_trans));
 //                                }
-//                                BrdWalletActivity.start(RedeemActivity.this, currencyCode);
-//                            } else {
-//                                WalletActivity.start(RedeemActivity.this, currencyCode);
-//                            }
-//                            overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+                                //tempItemView.setBackground(drawable);
+                            }
+                            overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
 //                        } else {
 //                            Intent intent = new Intent(RedeemActivity.this, AddWalletsActivity.class);
 //                            startActivity(intent);

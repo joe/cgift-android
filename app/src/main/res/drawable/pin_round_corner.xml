@@ -4,5 +4,6 @@
         android:radius="@dimen/radius"
         />
 
-    <solid android:color="@color/white"/>
+    <solid android:color="@color/black"/>
+    <stroke android:color="@color/white"/>
 </shape>

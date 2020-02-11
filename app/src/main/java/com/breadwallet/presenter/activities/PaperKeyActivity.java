@@ -158,9 +158,9 @@ public class PaperKeyActivity extends BRActivity {
 
             nextButtonParams.weight = NAVIGATION_BUTTONS_WEIGHT;
             nextButtonParams.gravity = Gravity.CENTER_HORIZONTAL;
-            nextButtonParams.setMargins((int) getResources().getDimension(R.dimen.margin), 0, (int) getResources().getDimension(R.dimen.margin), 0);
+            nextButtonParams.setMargins((int) getResources().getDimension(R.dimen.margin), 10, (int) getResources().getDimension(R.dimen.margin), 10);
             mNextButton.setLayoutParams(nextButtonParams);
-            mNextButton.setHeight((int) getResources().getDimension(R.dimen.large_button_height));
+            //mNextButton.setHeight((int) getResources().getDimension(R.dimen.large_button_height));
 
             mPreviousButton.setVisibility(View.GONE);
         } else {
@@ -173,10 +173,10 @@ public class PaperKeyActivity extends BRActivity {
 
             LinearLayout.LayoutParams previousButtonParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             previousButtonParams.weight = NAVIGATION_BUTTONS_WEIGHT;
-            previousButtonParams.setMargins((int) getResources().getDimension(R.dimen.margin), 0, 0, 0);
+            previousButtonParams.setMargins((int) getResources().getDimension(R.dimen.margin), 10, 10, 10);
             mPreviousButton.setLayoutParams(previousButtonParams);
             mPreviousButton.setVisibility(View.VISIBLE);
-            mPreviousButton.setHeight((int) getResources().getDimension(R.dimen.large_button_height));
+            //mPreviousButton.setHeight((int) getResources().getDimension(R.dimen.large_button_height));
         }
     }
 
