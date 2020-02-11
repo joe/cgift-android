@@ -24,14 +24,17 @@ import com.breadwallet.R;
 import com.breadwallet.api.CgiftAPIClient;
 import com.breadwallet.api.RedeemCardRequest;
 import com.breadwallet.presenter.activities.util.BRActivity;
+import com.breadwallet.presenter.customviews.BRDialogView;
 import com.breadwallet.presenter.viewmodels.HomeViewModel;
 import com.breadwallet.tools.adapter.RedeemListAdapter;
+import com.breadwallet.tools.animation.BRDialog;
 import com.breadwallet.tools.animation.UiUtils;
 import com.breadwallet.tools.listeners.RecyclerItemClickListener;
 import com.breadwallet.tools.manager.AppEntryPointHandler;
 import com.breadwallet.tools.manager.InternetManager;
 import com.breadwallet.tools.util.EventUtils;
 import com.breadwallet.tools.util.Utils;
+import com.breadwallet.view.dialog.DialogActivity;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
 //import rx.Observable;
@@ -107,22 +110,22 @@ public class RedeemActivity extends BRActivity {
                                 //drawable.setStroke(3, getResources().getColor(R.color.white));
                                 //gradientDrawable.setStroke(Utils.dpToPx(getActivity(),2), Color.WHITE, 10, 10);
                             //}
-                            for(View tempItemView : mAdapter.itemViewList) {
-                                Drawable drawable = getResources()
-                                        .getDrawable(R.drawable.redeem_card_shape, null)
-                                        .mutate();
-                                RedeemListAdapter.DecoratedWalletItemViewHolder decoratedHolderView = (RedeemListAdapter.DecoratedWalletItemViewHolder)mRedeemRecycler.findViewHolderForAdapterPosition(position);
-                                //if(v == tempItemView) {
-                                ((GradientDrawable) drawable).setStroke(4, getResources().getColor(R.color.white));
-                                    //GradientDrawable drawable = (GradientDrawable)v.getBackground();
-                                    //drawable.setStroke(3, getResources().getColor(R.color.white));
-                                decoratedHolderView.mParent.setBackground(drawable);
-//                                } else {
-//                                    //((GradientDrawable) drawable).setStroke(1, getResources().getColor(R.color.black_trans));
-//                                    GradientDrawable drawable = (GradientDrawable)v.getBackground();
-//                                    drawable.setStroke(1, getResources().getColor(R.color.black_trans));
-//                                }
-                                //tempItemView.setBackground(drawable);
+                            for(RedeemListAdapter.DecoratedWalletItemViewHolder tempItemView : mAdapter.itemViewList) {
+//                                Drawable drawable = getResources()
+//                                        .getDrawable(R.drawable.redeem_card_shape, null)
+//                                        .mutate();
+                                //RedeemListAdapter.DecoratedWalletItemViewHolder decoratedHolderView = (RedeemListAdapter.DecoratedWalletItemViewHolder)mRedeemRecycler.findViewHolderForAdapterPosition(position);
+                                //RedeemListAdapter.DecoratedWalletItemViewHolder decoratedHolderView = (RedeemListAdapter.DecoratedWalletItemViewHolder)tempItemView;
+                                GradientDrawable drawable = (GradientDrawable)tempItemView.mParent.getBackground();
+                                if(mRedeemRecycler.findViewHolderForAdapterPosition(position) == tempItemView) {
+                                    //((GradientDrawable) drawable).setStroke(4, getResources().getColor(R.color.white));
+                                    drawable.setStroke(5, getResources().getColor(R.color.white));
+                                } else {
+                                    //((GradientDrawable) drawable).setStroke(2, getResources().getColor(R.color.black_trans));
+                                    drawable.setStroke(2, getResources().getColor(R.color.black_trans));
+                                }
+                                //tempItemView.mParent.setBackground(drawable);
+                                //mAdapter.setBorderWhenSelected(position, tempItemView);
                             }
                             overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
 //                        } else {
@@ -179,6 +182,10 @@ public class RedeemActivity extends BRActivity {
         onNewIntent(getIntent());
     }
 
+    public void close(View v) {
+        onBackPressed();
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -225,16 +232,24 @@ public class RedeemActivity extends BRActivity {
                 .subscribe(
                         response -> {
                             if (!response.isSuccessful()) {
-                                Log.d("REDEEM", String.format("response.message %s", response.message()));
+                                Log.d("REDEEM", String.format("ERROR response.message %s", response.message()));
+                                showErrorDialog();
                             } else {
+                                // TODO: update DialogActivity for cgift messages
+                                DialogActivity.startDialogActivity(this, DialogActivity.DialogType.DEFAULT);
                                 Log.d("REDEEM", String.format("response.message %s", response.message()));
                             }
                         },
                         error -> {
-                            //new Alerts(Alerts.Type.NETWORK_ERROR).withThrowable(error).show(this);
+                            showErrorDialog();
                             Log.d("REDEEM", String.format("ERROR"));
                         }
                 );
+    }
+
+    private void showErrorDialog() {
+        // TODO: update DialogActivity for cgift messages
+        DialogActivity.startDialogActivity(this, DialogActivity.DialogType.DEFAULT);
     }
 
 }

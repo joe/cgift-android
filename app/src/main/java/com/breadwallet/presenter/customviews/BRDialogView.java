@@ -65,7 +65,7 @@ public class BRDialogView extends DialogFragment {
     private DialogInterface.OnDismissListener mDismissListener;
     private BRButton mNegativeButton;
     private LinearLayout mButtonsLayout;
-    private ImageButton mHelpButton;
+    //private ImageButton mHelpButton;
     private LinearLayout mMainLayout;
     private boolean mAlignTextToStart = false;
 
@@ -86,7 +86,7 @@ public class BRDialogView extends DialogFragment {
         mNegativeButton = view.findViewById(R.id.neg_button);
         mMainLayout = view.findViewById(R.id.main_layout);
         mButtonsLayout = view.findViewById(R.id.linearLayout3);
-        mHelpButton = view.findViewById(R.id.help_icon);
+        //mHelpButton = view.findViewById(R.id.help_icon);
 
         //assuming that is the last text to bet set.
         if (Utils.isNullOrEmpty(mTitle)) {
@@ -174,27 +174,27 @@ public class BRDialogView extends DialogFragment {
 
         builder.setView(view);
 
-        if (mShowHelpIcon) {
-            mHelpButton.setVisibility(View.VISIBLE);
-
-            messageText.setPadding(0, 0, 0, Utils.getPixelsFromDps(getContext(), MESSAGE_PADDING_END));
-
-            mHelpButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (!UiUtils.isClickAllowed()) {
-                        return;
-                    }
-                    if (mHelpListener != null) {
-                        mHelpListener.onClick(BRDialogView.this);
-                    }
-                }
-            });
-
-        } else {
-            mHelpButton.setVisibility(View.INVISIBLE);
-
-        }
+//        if (mShowHelpIcon) {
+//            //mHelpButton.setVisibility(View.VISIBLE);
+//
+//            messageText.setPadding(0, 0, 0, Utils.getPixelsFromDps(getContext(), MESSAGE_PADDING_END));
+//
+//            mHelpButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    if (!UiUtils.isClickAllowed()) {
+//                        return;
+//                    }
+//                    if (mHelpListener != null) {
+//                        mHelpListener.onClick(BRDialogView.this);
+//                    }
+//                }
+//            });
+//
+//        } else {
+//            mHelpButton.setVisibility(View.INVISIBLE);
+//
+//        }
         // Create the AlertDialog object and return it
         return builder.create();
     }

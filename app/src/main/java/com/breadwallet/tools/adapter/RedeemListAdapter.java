@@ -46,7 +46,7 @@ public class RedeemListAdapter extends RecyclerView.Adapter<RedeemListAdapter.Wa
     private static final int VIEW_TYPE_REDEEM_CARD = 2;
     private final Context mContext;
     private List<Wallet> mWallets;
-    public List<View>itemViewList = new ArrayList<>();
+    public List<RedeemListAdapter.DecoratedWalletItemViewHolder>itemViewList = new ArrayList<>();
 
     /**
      * Instantiates the adapter with an empty list of wallets.
@@ -83,23 +83,9 @@ public class RedeemListAdapter extends RecyclerView.Adapter<RedeemListAdapter.Wa
         if (viewType == VIEW_TYPE_WALLET) {
             // Inflate wallet view
             convertView = inflater.inflate(R.layout.redeem_list_item, parent, false);
-            //final WalletItemViewHolder myViewHolder = new WalletItemViewHolder(convertView);
-            itemViewList.add(convertView);
-//            convertView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    for(View tempItemView : itemViewList) {
-//                        /** navigate through all the itemViews and change color
-//                         of selected view to colorSelected and rest of the views to colorDefault **/
-//                        if(itemViewList.get(myViewHolder.getAdapterPosition()) == tempItemView) {
-//                            tempItemView.setBackgroundResource(R.drawable.redeem_card_shape);
-//                        } else {
-//                            tempItemView.setBackgroundResource(R.color.black_trans);
-//                        }
-//                    }
-//                }
-//            });
-            return new RedeemListAdapter.DecoratedWalletItemViewHolder(convertView);
+            RedeemListAdapter.DecoratedWalletItemViewHolder dwivh = new RedeemListAdapter.DecoratedWalletItemViewHolder(convertView);
+            itemViewList.add(dwivh);
+            return dwivh;
         } else {
             throw new IllegalArgumentException("Invalid type: " + viewType);
         }
@@ -233,6 +219,17 @@ public class RedeemListAdapter extends RecyclerView.Adapter<RedeemListAdapter.Wa
 //            BaseTextView addWalletLabel = holderView.itemView.findViewById(R.id.add_wallets);
 //            addWalletLabel.setText("+ " + mContext.getString(R.string.TokenList_addTitle));
         }
+    }
+
+    public void setBorderWhenSelected(int position, RedeemListAdapter.DecoratedWalletItemViewHolder decoratedHolderView) {
+        Wallet wallet = mWallets.get(position);
+        WalletUiConfiguration uiConfiguration = WalletsMaster.getInstance().getWalletByIso(mContext, wallet.getCurrencyCode()).getUiConfiguration();
+        String startColor = uiConfiguration.getStartColor();
+        Drawable drawable = mContext.getResources().getDrawable(R.drawable.redeem_card_shape, null).mutate();
+        ((GradientDrawable) drawable).setColors(new int[]{Color.parseColor(startColor), mContext.getColor(R.color.black_trans)});
+        ((GradientDrawable) drawable).setOrientation(GradientDrawable.Orientation.LEFT_RIGHT);
+        decoratedHolderView.mParent.setBackground(drawable);
+        setWalletItemColors(decoratedHolderView, R.dimen.token_background_no_alpha);
     }
 
     /**
