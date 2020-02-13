@@ -1218,5 +1218,8 @@
     <string name="Wallet.three_years">3y</string>
     <string name="title_activity_redeem">RedeemActivity</string>
     <string name="StartPaperPhrase.body.more">This key is required to recover your money if you upgrade or lose your phone.</string>
+    <string name="RedeemGiftCard.successMessage">Your card was successfully redeemed!</string>
+    <string name="RedeemGiftCard.notSuccessfulMessage">We could not redeem your CGift card at this time. Please try again.</string>
+    <string name="RedeemGiftCard.errorMessage">An error has occurred - please try again.</string>
 
 </resources>

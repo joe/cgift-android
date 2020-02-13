@@ -61,17 +61,25 @@
         android:background="?attr/settings_menu_background"
     />
 
+    <View
+        android:id="@+id/anchor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
     <ImageView
         android:id="@+id/lockImg"
-        android:layout_width="@dimen/faq_dimen"
-        android:layout_height="@dimen/faq_dimen"
-        android:layout_below="@+id/gradient_layout"
+        android:layout_width="130dp"
+        android:layout_height="175dp"
+        android:layout_above="@+id/anchor"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/ic_paper_phrase"/>
+        android:layout_centerVertical="true"
+        android:background="@drawable/cg_img_lock" />
 
     <com.breadwallet.presenter.customviews.BaseTextView
         android:id="@+id/textView6"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lockImg"
         android:layout_centerHorizontal="true"
@@ -79,10 +87,10 @@
         android:layout_marginTop="@dimen/bread_margin"
         android:layout_marginEnd="@dimen/bread_margin"
         android:layout_marginBottom="@dimen/bread_margin"
-        android:lineSpacingMultiplier="1.3"
+        android:gravity="center"
         android:text="@string/StartPaperPhrase.body"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="18sp" />
+        android:textSize="24sp"
+        app:brdFont="@string/Font.CircularPro_Bold" />
 
     <com.breadwallet.presenter.customviews.BaseTextView
         android:id="@+id/moreText"
@@ -90,9 +98,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView6"
         android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/bread_margin"
-        android:layout_marginTop="51dp"
-        android:lineSpacingMultiplier="1.3"
+        android:layout_marginStart="@dimen/bread_margin"
+        android:layout_marginTop="@dimen/bread_margin"
+        android:layout_marginEnd="@dimen/bread_margin"
+        android:layout_marginBottom="@dimen/bread_margin"
+        android:gravity="center"
         android:text="@string/StartPaperPhrase.body.more"
         android:textSize="18sp" />
 

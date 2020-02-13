@@ -221,17 +221,6 @@ public class RedeemListAdapter extends RecyclerView.Adapter<RedeemListAdapter.Wa
         }
     }
 
-    public void setBorderWhenSelected(int position, RedeemListAdapter.DecoratedWalletItemViewHolder decoratedHolderView) {
-        Wallet wallet = mWallets.get(position);
-        WalletUiConfiguration uiConfiguration = WalletsMaster.getInstance().getWalletByIso(mContext, wallet.getCurrencyCode()).getUiConfiguration();
-        String startColor = uiConfiguration.getStartColor();
-        Drawable drawable = mContext.getResources().getDrawable(R.drawable.redeem_card_shape, null).mutate();
-        ((GradientDrawable) drawable).setColors(new int[]{Color.parseColor(startColor), mContext.getColor(R.color.black_trans)});
-        ((GradientDrawable) drawable).setOrientation(GradientDrawable.Orientation.LEFT_RIGHT);
-        decoratedHolderView.mParent.setBackground(drawable);
-        setWalletItemColors(decoratedHolderView, R.dimen.token_background_no_alpha);
-    }
-
     /**
      * Set colors on view holder.
      *

@@ -95,44 +95,20 @@ public class RedeemActivity extends BRActivity {
         mRedeemRecycler.addOnItemTouchListener(new RecyclerItemClickListener(this,
                 mRedeemRecycler,
                 new RecyclerItemClickListener.OnItemClickListener() {
+
                     @Override
                     public void onItemClick(View view, int position, float x, float y) {
-//                        if (position >= mAdapter.getItemCount() || position < 0) {
-//                            return;
-//                        }
-                         //if (mAdapter.getItemViewType(position) == 0) {
-                            String currencyCode = mAdapter.getItemAt(position).getCurrencyCode();
-                            Log.d(TAG, currencyCode);
-
-                            //for (LinearLayout ll : mAdapter.itemViewList) {
-                                //ll.setBackgroundResource(R.drawable.redeem_card_shape);
-                                //GradientDrawable drawable = (GradientDrawable)ll.getBackground();
-                                //drawable.setStroke(3, getResources().getColor(R.color.white));
-                                //gradientDrawable.setStroke(Utils.dpToPx(getActivity(),2), Color.WHITE, 10, 10);
-                            //}
-                            for(RedeemListAdapter.DecoratedWalletItemViewHolder tempItemView : mAdapter.itemViewList) {
-//                                Drawable drawable = getResources()
-//                                        .getDrawable(R.drawable.redeem_card_shape, null)
-//                                        .mutate();
-                                //RedeemListAdapter.DecoratedWalletItemViewHolder decoratedHolderView = (RedeemListAdapter.DecoratedWalletItemViewHolder)mRedeemRecycler.findViewHolderForAdapterPosition(position);
-                                //RedeemListAdapter.DecoratedWalletItemViewHolder decoratedHolderView = (RedeemListAdapter.DecoratedWalletItemViewHolder)tempItemView;
-                                GradientDrawable drawable = (GradientDrawable)tempItemView.mParent.getBackground();
-                                if(mRedeemRecycler.findViewHolderForAdapterPosition(position) == tempItemView) {
-                                    //((GradientDrawable) drawable).setStroke(4, getResources().getColor(R.color.white));
-                                    drawable.setStroke(5, getResources().getColor(R.color.white));
-                                } else {
-                                    //((GradientDrawable) drawable).setStroke(2, getResources().getColor(R.color.black_trans));
-                                    drawable.setStroke(2, getResources().getColor(R.color.black_trans));
-                                }
-                                //tempItemView.mParent.setBackground(drawable);
-                                //mAdapter.setBorderWhenSelected(position, tempItemView);
+                        String currencyCode = mAdapter.getItemAt(position).getCurrencyCode();
+                        Log.d(TAG, currencyCode);
+                        for(RedeemListAdapter.DecoratedWalletItemViewHolder tempItemView : mAdapter.itemViewList) {
+                            GradientDrawable drawable = (GradientDrawable)tempItemView.mParent.getBackground();
+                            if(mRedeemRecycler.findViewHolderForAdapterPosition(position) == tempItemView) {
+                                drawable.setStroke(5, getResources().getColor(R.color.white));
+                            } else {
+                                drawable.setStroke(2, getResources().getColor(R.color.black_trans));
                             }
-                            overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
-//                        } else {
-//                            Intent intent = new Intent(RedeemActivity.this, AddWalletsActivity.class);
-//                            startActivity(intent);
-//                            overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
-//                        }
+                        }
+                        overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
                     }
 
                     @Override
@@ -233,23 +209,34 @@ public class RedeemActivity extends BRActivity {
                         response -> {
                             if (!response.isSuccessful()) {
                                 Log.d("REDEEM", String.format("ERROR response.message %s", response.message()));
-                                showErrorDialog();
+                                showErrorDialog(this.getString(R.string.RedeemGiftCard_notSuccessfulMessage));
                             } else {
-                                // TODO: update DialogActivity for cgift messages
-                                DialogActivity.startDialogActivity(this, DialogActivity.DialogType.DEFAULT);
-                                Log.d("REDEEM", String.format("response.message %s", response.message()));
+                                BRDialog.showCustomDialog(this, "Redeem Card",
+                                        this.getString(R.string.RedeemGiftCard_successMessage),
+                                        this.getString(R.string.AccessibilityLabels_close), null, new BRDialogView.BROnClickListener() {
+                                            @Override
+                                            public void onClick(BRDialogView brDialogView) {
+                                                brDialogView.dismiss();
+                                                RedeemActivity.this.onBackPressed();
+                                            }
+                                        }, null, null, 0);
                             }
                         },
                         error -> {
-                            showErrorDialog();
+                            showErrorDialog(this.getString(R.string.RedeemGiftCard_errorMessage));
                             Log.d("REDEEM", String.format("ERROR"));
                         }
                 );
     }
 
-    private void showErrorDialog() {
-        // TODO: update DialogActivity for cgift messages
-        DialogActivity.startDialogActivity(this, DialogActivity.DialogType.DEFAULT);
+    private void showErrorDialog(String message) {
+        BRDialog.showCustomDialog(this, "Redeem Card", message,
+                this.getString(R.string.AccessibilityLabels_close), null, new BRDialogView.BROnClickListener() {
+                    @Override
+                    public void onClick(BRDialogView brDialogView) {
+                        brDialogView.dismiss();
+                    }
+                }, null, null, 0);
     }
 
 }
