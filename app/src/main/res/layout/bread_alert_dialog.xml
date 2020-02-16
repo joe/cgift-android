@@ -16,11 +16,11 @@
 
         <ImageButton
             android:id="@+id/brd_logo"
-            android:layout_width="30dp"
-            android:layout_height="37dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_centerInParent="true"
             android:layout_marginTop="10dp"
-            android:background="@drawable/cg_img_shield" />
+            android:background="@drawable/ic_logo" />
 
 <!--        <ImageButton-->
 <!--            android:id="@+id/help_icon"-->

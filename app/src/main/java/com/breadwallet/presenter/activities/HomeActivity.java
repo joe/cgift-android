@@ -194,7 +194,7 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
 //        mViewModel.getWallets()
 //                .observe(this, wallets -> mAdapter.setWallets(wallets));
         mViewModel.getWallets().observe(this, wallets ->
-                mAdapter.setWallets(wallets.subList(0, 2))
+                mAdapter.setWallets(wallets)
         );
 
 //        mViewModel.getAggregatedFiatBalance().observe(this, aggregatedFiatBalance -> {

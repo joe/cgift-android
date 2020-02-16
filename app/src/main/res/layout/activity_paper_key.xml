@@ -27,6 +27,8 @@
             android:text="@string/SecurityCenter.paperKeyTitle.android"
             android:textAlignment="center"
             android:textColor="@color/white"
+
+
             android:textSize="@dimen/header"
             app:brdFont="@string/Font.CircularPro_Bold"
             app:layout_constraintHorizontal_bias="0.501"

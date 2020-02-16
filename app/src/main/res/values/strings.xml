@@ -834,7 +834,7 @@
     <!-- Sync blockchain label -->
     <string name="Settings.sync">Sync Blockchain</string>
     <!-- Settings title -->
-    <string name="Settings.title">Menu</string>
+    <string name="Settings.title">Settings</string>
     <!-- Touch ID spending limit label -->
     <string name="Settings.touchIdLimit">Touch ID Spending Limit</string>
     <!-- The fingerprint spending limit -->

@@ -15,9 +15,9 @@
         android:padding="10dp"
         android:text="@string/Import.scan"
         android:textSize="@dimen/button_text_size"
-        app:buttonType="1"
+        android:textColor="@color/black"
+        android:background="@color/prompt_action_button"
         app:customBFont="CircularPro-Medium.otf"
-        app:isBreadButton="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

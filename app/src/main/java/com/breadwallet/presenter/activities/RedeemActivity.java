@@ -35,6 +35,7 @@ import com.breadwallet.tools.manager.InternetManager;
 import com.breadwallet.tools.util.EventUtils;
 import com.breadwallet.tools.util.Utils;
 import com.breadwallet.view.dialog.DialogActivity;
+import com.breadwallet.wallet.WalletsMaster;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
 //import rx.Observable;
@@ -64,6 +65,7 @@ public class RedeemActivity extends BRActivity {
 
     Observable<Boolean> observable;
     public static final String REDEEM_EXTRA_DATA = "com.breadwallet.presenter.activities.RedeemActivity.REDEEM_EXTRA_DATA";
+    private String selectedToken = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +100,8 @@ public class RedeemActivity extends BRActivity {
 
                     @Override
                     public void onItemClick(View view, int position, float x, float y) {
-                        String currencyCode = mAdapter.getItemAt(position).getCurrencyCode();
-                        Log.d(TAG, currencyCode);
+                        selectedToken = mAdapter.getItemAt(position).getCurrencyCode();
+                        Log.d(TAG, selectedToken);
                         for(RedeemListAdapter.DecoratedWalletItemViewHolder tempItemView : mAdapter.itemViewList) {
                             GradientDrawable drawable = (GradientDrawable)tempItemView.mParent.getBackground();
                             if(mRedeemRecycler.findViewHolderForAdapterPosition(position) == tempItemView) {
@@ -199,8 +201,9 @@ public class RedeemActivity extends BRActivity {
         rcr.setCardNumber(mCode.getText().toString());
         //0000
         rcr.setPin(mPin.getText().toString());
-        rcr.setWalletAddress("1Ej4Jy4S8Zo1V7MVexX41bDgpDzkj1vc5r");
-        rcr.setDestinationCurrency("BTC");
+        //rcr.setWalletAddress("1Ej4Jy4S8Zo1V7MVexX41bDgpDzkj1vc5r");
+        rcr.setWalletAddress(WalletsMaster.getInstance().getWalletByIso(this, selectedToken).getAddress(this));
+        rcr.setDestinationCurrency(selectedToken.length()>0 ? selectedToken : "BTC");
 
         CgiftAPIClient.getApi(this).redeem(rcr)
                 .subscribeOn(Schedulers.io())
