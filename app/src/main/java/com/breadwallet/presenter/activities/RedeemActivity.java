@@ -66,6 +66,7 @@ public class RedeemActivity extends BRActivity {
     Observable<Boolean> observable;
     public static final String REDEEM_EXTRA_DATA = "com.breadwallet.presenter.activities.RedeemActivity.REDEEM_EXTRA_DATA";
     private String selectedToken = "";
+    private Boolean keyboardShowing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +77,8 @@ public class RedeemActivity extends BRActivity {
         mCode = findViewById(R.id.cardNumber);
         mPin = findViewById(R.id.pinNumber);
         mRedeemButton = findViewById(R.id.redeemButton);
+
+        attachKeyboardListeners();
 
         mRedeemRecycler = findViewById(R.id.redeem_wallet_list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false) {
@@ -160,6 +163,11 @@ public class RedeemActivity extends BRActivity {
         onNewIntent(getIntent());
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
     public void close(View v) {
         onBackPressed();
     }
@@ -174,9 +182,12 @@ public class RedeemActivity extends BRActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         String data = intent.getStringExtra(REDEEM_EXTRA_DATA);
-        data = "811111111199999";
-        if (Pattern.matches("[1-9]{1}[0-9]{11,15}", data)) {
-            mCode.setText(data, TextView.BufferType.NORMAL);
+        if (data!=null && data.length()>0) {
+            if (Pattern.matches("[1-9]{1}[0-9]{11,15}", data)) {
+                mCode.setText(data, TextView.BufferType.NORMAL);
+            } else {
+                mCode.setText("", TextView.BufferType.NORMAL);
+            }
         }
     }
 
@@ -191,6 +202,16 @@ public class RedeemActivity extends BRActivity {
         return validCode && validPin;
     }
 
+    @Override
+    protected void onShowKeyboard() {
+        keyboardShowing = true;
+    }
+
+    @Override
+    protected void onHideKeyboard() {
+        keyboardShowing = false;
+    }
+
     public void scan(View v) {
         UiUtils.openScanner(this);
     }
@@ -202,8 +223,9 @@ public class RedeemActivity extends BRActivity {
         //0000
         rcr.setPin(mPin.getText().toString());
         //rcr.setWalletAddress("1Ej4Jy4S8Zo1V7MVexX41bDgpDzkj1vc5r");
+        if (selectedToken.length()==0) selectedToken = "BTC";
         rcr.setWalletAddress(WalletsMaster.getInstance().getWalletByIso(this, selectedToken).getAddress(this));
-        rcr.setDestinationCurrency(selectedToken.length()>0 ? selectedToken : "BTC");
+        rcr.setDestinationCurrency(selectedToken);
 
         CgiftAPIClient.getApi(this).redeem(rcr)
                 .subscribeOn(Schedulers.io())

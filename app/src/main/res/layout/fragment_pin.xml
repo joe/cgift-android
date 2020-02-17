@@ -5,7 +5,6 @@
     android:id="@+id/activity_pin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black_trans"
     tools:context="com.breadwallet.presenter.activities.LoginActivity">
 
     <RelativeLayout
