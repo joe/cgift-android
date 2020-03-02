@@ -34,15 +34,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.breadwallet.BuildConfig;
 import com.breadwallet.R;
-import com.breadwallet.api.CgiftAPIClient;
-import com.breadwallet.api.CgiftAPI;
-import com.breadwallet.api.RedeemCardRequest;
 import com.breadwallet.model.Experiments;
 import com.breadwallet.presenter.activities.settings.SettingsActivity;
 import com.breadwallet.presenter.activities.util.BRActivity;
@@ -51,27 +45,20 @@ import com.breadwallet.presenter.customviews.BaseTextView;
 import com.breadwallet.presenter.viewmodels.HomeViewModel;
 import com.breadwallet.repository.ExperimentsRepositoryImpl;
 import com.breadwallet.tools.adapter.WalletListAdapter;
-import com.breadwallet.tools.animation.UiUtils;
 import com.breadwallet.tools.listeners.RecyclerItemClickListener;
 import com.breadwallet.tools.manager.AppEntryPointHandler;
 import com.breadwallet.tools.manager.BRSharedPrefs;
 import com.breadwallet.tools.manager.InternetManager;
 import com.breadwallet.tools.manager.PromptManager;
 import com.breadwallet.tools.util.BRConstants;
-import com.breadwallet.tools.util.CurrencyUtils;
 import com.breadwallet.tools.util.EventUtils;
 import com.breadwallet.tools.util.Utils;
 import com.breadwallet.ui.notification.InAppNotificationActivity;
 import com.breadwallet.ui.wallet.WalletActivity;
-import com.breadwallet.wallet.wallets.bitcoin.WalletBitcoinManager;
 import com.breadwallet.wallet.wallets.ethereum.WalletTokenManager;
-import com.platform.HTTPServer;
-import com.trello.rxlifecycle.android.ActivityEvent;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import rx.schedulers.Schedulers;
 
 /**
  * Created by byfieldj on 1/17/18.
@@ -131,8 +118,8 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
 //        });
 
         mBuyLayout.setOnClickListener(view -> {
-            Intent intent = new Intent(HomeActivity.this, RedeemActivity.class);
-            intent.putExtra(SettingsActivity.EXTRA_MODE, SettingsActivity.MODE_SETTINGS);
+            Intent intent = new Intent(HomeActivity.this, RedeemWebViewActivity.class);
+            //intent.putExtra(SettingsActivity.EXTRA_MODE, SettingsActivity.MODE_SETTINGS);
             startActivity(intent);
             overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
         });

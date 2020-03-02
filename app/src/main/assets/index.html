@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+        window.androidFunc = {
+            receiveMessage: function(name, body) {
+                alert(name, body);
+            }
+        };
+        function sendMessage(name, body) {
+            android.sendMessage(name, body);
+        }
+    </script>
+</head>
+<body>
+<br><br>
+<br><br>
+<input type="button" value="Say hello" onClick="window.androidFunc.receiveMessage('Hello Android!', 'Hello Jerry')" />
+<br><br>
+<input type="button" value="hella good" onClick="sendMessage('ready', 'testt')" />
+<br><br>
+<input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')" />
+</body>
+</html>
