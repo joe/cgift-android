@@ -25,11 +25,16 @@ class RedeemWebViewActivity() : BRActivity() {
 
     private final var cGiftScript =
             """
-                window.cgift = {
-                    sendMessage: function(name, message) {
-                        android.postMessage(name, message);
+                <script type="text/javascript">
+                    window.cgift = {
+                        receiveMessage: function(name, body) {
+                            alert(name, body);
+                        }
+                    };
+                    function sendMessage(name, body) {
+                        android.sendMessage(name, body);
                     }
-                };
+                </script>
             """.trimIndent()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,13 +57,7 @@ class RedeemWebViewActivity() : BRActivity() {
             mWebView?.setWebViewClient(object : WebViewClient() {
                 override fun onPageFinished(view: WebView, url: String) {
                     mWebAppLoaded = true
-                    mWebView!!.evaluateJavascript("window.androidFunc !== undefined") { value ->
-                        if (java.lang.Boolean.parseBoolean(value)) {
-                            mWebView!!.evaluateJavascript("window.androidFunc.receiveMessage('POST!', 'werwerwerwerwerwer')") {
-                                // ignore for now
-                            }
-                        }
-                    }
+                    //mWebView?.loadUrl(cGiftScript)
                 }
                 override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
                     view.loadUrl(url)
@@ -105,11 +104,82 @@ class RedeemWebViewActivity() : BRActivity() {
         return super.onKeyDown(keyCode, event)
     }
 
+    fun handleReadyMessage() {
+        //isReady = true
+        //sendAllWalletAddressMessages()
+    }
+
+    fun handleBackMessage() {
+        //navigationController?.popViewController(animated: true)
+    }
+
+    fun handleForwardMessage(body: Any) {
+//        guard let props = body as? [String: String] else {
+//            print("Message params are invalid.")
+//            return
+//        }
+//
+//        guard let urlString = props["url"] else {
+//            print("Message must have a `url` property.")
+//            return
+//        }
+//
+//        guard let url = URL(string: urlString) else {
+//            print("Message `url` is invalid: \(urlString)")
+//            return
+//        }
+//
+//        let vc = CGRedeemWorkflowViewController(destination: url)
+//        vc.redeemWorkflowDelegate = redeemWorkflowDelegate
+//        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    fun handleDismissMessage() {
+        //redeemWorkflowDelegate?.redeemGiftCardDidDismiss()
+    }
+
+    fun handleSuccessMessage(body: Any) {
+//        guard let props = body as? [String: String] else {
+//            print("Message params are invalid.")
+//            return
+//        }
+//
+//        guard let title = props["title"] else {
+//            print("Message must have a `title` property.")
+//            return
+//        }
+//
+//        guard let detail = props["detail"] else {
+//            print("Message must have a `detail` property.")
+//            return
+//        }
+//
+//        redeemWorkflowDelegate?.redeemGiftCardDidSucceed(title: title, detail: detail)
+    }
+
+    fun handleFailureMessage(body: Any) {
+//        guard let props = body as? [String: String] else {
+//            print("Message params are invalid.")
+//            return
+//        }
+//
+//        guard let error = props["error"] else {
+//            print("Message must have an `error` property.")
+//            return
+//        }
+//
+//        redeemWorkflowDelegate?.redeemGiftCardDidFail(error: error)
+    }
+
     companion object {
         var mWebView: WebView? = null
         fun sendMessage(name: String, body: String) {
-            mWebView!!.evaluateJavascript("this.recieveMessage('" + name + "', 'testtrrrrrrrrr from android')") {
-                // ignore for now
+            mWebView!!.evaluateJavascript("window.cgift !== undefined") { value ->
+                if (java.lang.Boolean.parseBoolean(value)) {
+                    mWebView!!.evaluateJavascript("window.cgift.receiveMessage('werwerwerwerwerwer!', '')") {
+                        print(it)
+                    }
+                }
             }
         }
     }
@@ -117,24 +187,33 @@ class RedeemWebViewActivity() : BRActivity() {
 }
 
 /** Instantiate the interface and set the context  */
-class CGiftJavascriptInterface(private val mContext: Context) {
-
+class CGiftJavascriptInterface(private val mContext: RedeemWebViewActivity) {
     @JavascriptInterface
     fun sendMessage(message: String, body: String) {
-        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
         when (message) {
             "ready" -> {
-                print("x == 1")
-                RedeemWebViewActivity.sendMessage(message, body)
+                mContext.handleReadyMessage()
             }
-            "back" -> RedeemWebViewActivity.sendMessage(message, body)
-            "forward" -> RedeemWebViewActivity.sendMessage(message, body)
+            "back" -> {
+                mContext.handleBackMessage()
+            }
+            "forward" -> {
+                mContext.handleForwardMessage("")
+            }
+            "dismiss" -> {
+                mContext.handleDismissMessage()
+            }
+            "success" -> {
+                mContext.handleSuccessMessage("")
+            }
+            "failure" -> {
+                mContext.handleFailureMessage("")
+            }
             else -> {
-                //print("x is neither 1 nor 2")
+                print("Unsupported message: ")
             }
         }
     }
-
 }
 
 private class CGiftWebViewClient : WebChromeClient() {
