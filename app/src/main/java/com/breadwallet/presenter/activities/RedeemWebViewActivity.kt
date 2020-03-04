@@ -13,6 +13,15 @@ import com.breadwallet.R
 
 
 import com.breadwallet.presenter.activities.util.BRActivity
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.annotations.SerializedName
+import org.json.JSONObject
+
+data class MyClass(@SerializedName("s1") val s1: Int)
+
+//val myClass: MyClass = Gson().fromJson(data, MyClass::class.java)
+//val outputJson: String = Gson().toJson(myClass)
 
 /**
  * Created by afresina on 2/26/20.
@@ -23,19 +32,7 @@ class RedeemWebViewActivity() : BRActivity() {
     //private var mWebView: WebView? = null
     private var mWebAppLoaded = false
 
-    private final var cGiftScript =
-            """
-                <script type="text/javascript">
-                    window.cgift = {
-                        receiveMessage: function(name, body) {
-                            alert(name, body);
-                        }
-                    };
-                    function sendMessage(name, body) {
-                        android.sendMessage(name, body);
-                    }
-                </script>
-            """.trimIndent()
+    private final var cGiftScript = "window.cgift = {platform: 'android',sendMessage: function(name, body){android.sendMessage(name, JSON.stringify(body));}};"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +54,12 @@ class RedeemWebViewActivity() : BRActivity() {
             mWebView?.setWebViewClient(object : WebViewClient() {
                 override fun onPageFinished(view: WebView, url: String) {
                     mWebAppLoaded = true
-                    //mWebView?.loadUrl(cGiftScript)
+                    mWebView!!.evaluateJavascript(cGiftScript) {
+                        print(it)
+                    }
+                    mWebView!!.evaluateJavascript("cgiftReady();") {
+                        print(it)
+                    }
                 }
                 override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
                     view.loadUrl(url)
@@ -139,6 +141,15 @@ class RedeemWebViewActivity() : BRActivity() {
     }
 
     fun handleSuccessMessage(body: Any) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this@RedeemWebViewActivity)
+        val alertDialog: AlertDialog = builder.create()
+        var message = "Success from Window.CGift!!"
+        alertDialog.setTitle("Success")
+        alertDialog.setMessage(message)
+        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", DialogInterface.OnClickListener { dialog, which ->
+            // Ignore SSL certificate errors
+        })
+        alertDialog.show()
 //        guard let props = body as? [String: String] else {
 //            print("Message params are invalid.")
 //            return
@@ -190,6 +201,8 @@ class RedeemWebViewActivity() : BRActivity() {
 class CGiftJavascriptInterface(private val mContext: RedeemWebViewActivity) {
     @JavascriptInterface
     fun sendMessage(message: String, body: String) {
+        val jsonObject = GsonBuilder().create().fromJson(body, Object::class.java)
+        print("sendMessage message: $message $jsonObject")
         when (message) {
             "ready" -> {
                 mContext.handleReadyMessage()

@@ -226,6 +226,7 @@ public class RedeemActivity extends BRActivity {
         if (selectedToken.length()==0) selectedToken = "BTC";
         rcr.setWalletAddress(WalletsMaster.getInstance().getWalletByIso(this, selectedToken).getAddress(this));
         rcr.setDestinationCurrency(selectedToken);
+        updateButton(false);
 
         CgiftAPIClient.getApi(this).redeem(rcr)
                 .subscribeOn(Schedulers.io())
@@ -242,7 +243,10 @@ public class RedeemActivity extends BRActivity {
                                             @Override
                                             public void onClick(BRDialogView brDialogView) {
                                                 brDialogView.dismiss();
-                                                RedeemActivity.this.onBackPressed();
+                                                //RedeemActivity.this.onBackPressed();
+                                                Intent intent = new Intent(RedeemActivity.this, RedeemWebViewActivity.class);
+                                                startActivity(intent);
+                                                overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
                                             }
                                         }, null, null, 0);
                             }

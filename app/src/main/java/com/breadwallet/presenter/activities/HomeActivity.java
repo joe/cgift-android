@@ -118,7 +118,7 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
 //        });
 
         mBuyLayout.setOnClickListener(view -> {
-            Intent intent = new Intent(HomeActivity.this, RedeemWebViewActivity.class);
+            Intent intent = new Intent(HomeActivity.this, RedeemActivity.class);
             //intent.putExtra(SettingsActivity.EXTRA_MODE, SettingsActivity.MODE_SETTINGS);
             startActivity(intent);
             overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
