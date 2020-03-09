@@ -67,6 +67,7 @@ public class RedeemActivity extends BRActivity {
     public static final String REDEEM_EXTRA_DATA = "com.breadwallet.presenter.activities.RedeemActivity.REDEEM_EXTRA_DATA";
     private String selectedToken = "";
     private Boolean keyboardShowing = false;
+    public static RedeemCardRequest rcr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -227,16 +228,21 @@ public class RedeemActivity extends BRActivity {
         rcr.setWalletAddress(WalletsMaster.getInstance().getWalletByIso(this, selectedToken).getAddress(this));
         rcr.setDestinationCurrency(selectedToken);
         updateButton(false);
+        RedeemActivity.rcr = rcr;
 
-        CgiftAPIClient.getApi(this).redeem(rcr)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        response -> {
-                            if (!response.isSuccessful()) {
-                                Log.d("REDEEM", String.format("ERROR response.message %s", response.message()));
-                                showErrorDialog(this.getString(R.string.RedeemGiftCard_notSuccessfulMessage));
-                            } else {
+        Intent intent = new Intent(RedeemActivity.this, RedeemWebViewActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+
+//        CgiftAPIClient.getApi(this).redeem(rcr)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(
+//                        response -> {
+//                            if (!response.isSuccessful()) {
+//                                Log.d("REDEEM", String.format("ERROR response.message %s", response.message()));
+//                                showErrorDialog(this.getString(R.string.RedeemGiftCard_notSuccessfulMessage));
+//                            } else {
                                 BRDialog.showCustomDialog(this, "Redeem Card",
                                         this.getString(R.string.RedeemGiftCard_successMessage),
                                         this.getString(R.string.AccessibilityLabels_close), null, new BRDialogView.BROnClickListener() {
@@ -249,13 +255,13 @@ public class RedeemActivity extends BRActivity {
                                                 overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
                                             }
                                         }, null, null, 0);
-                            }
-                        },
-                        error -> {
-                            showErrorDialog(this.getString(R.string.RedeemGiftCard_errorMessage));
-                            Log.d("REDEEM", String.format("ERROR"));
-                        }
-                );
+//                            }
+//                        },
+//                        error -> {
+//                            showErrorDialog(this.getString(R.string.RedeemGiftCard_errorMessage));
+//                            Log.d("REDEEM", String.format("ERROR"));
+//                        }
+//                );
     }
 
     private void showErrorDialog(String message) {

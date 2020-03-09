@@ -1,8 +1,5 @@
-<!doctype html>
 <html>
 <head>
-<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
     <title>Redeem a CGift</title>
     <style>
         body {
@@ -31,11 +28,10 @@
 <button onclick="javascript:window.cgift.sendMessage('failure', { error: 'This is an example error message.' });">Error</button>
 <button onclick="javascript:window.cgift.sendMessage('dismiss');">Dismiss</button>
 <script>
-        (function() {
+        function cgiftReady() {
             /* Define how to receive messages for this page: */
 
             window.cgift = Object.assign(window.cgift, {
-                isReady = false,
                 receiveMessage: function(name, message) {
                     switch (name) {
                     case 'walletAddress':
@@ -46,10 +42,6 @@
                     default:
                         break;
                     }
-                },
-                onCGiftReady: function() {
-                    isReady = true;
-                    window.cgift.sendMessage('isReady true');
                 }
             });
 
@@ -87,7 +79,7 @@
                     el.innerHTML = isDone ? 'All wallets loaded.' : 'Loading...';
                 }
             }
-        })();
+        }
     </script>
 </body>
 </html>
