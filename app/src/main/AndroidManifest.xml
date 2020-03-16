@@ -52,6 +52,7 @@
         <activity
             android:name=".presenter.activities.RedeemActivity"
             android:label="@string/title_activity_redeem"
+            android:windowSoftInputMode="adjustResize"
             android:theme="@style/AppTheme.Dark.NoActionBar"></activity>
 
         <provider
