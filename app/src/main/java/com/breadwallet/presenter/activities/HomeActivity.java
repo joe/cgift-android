@@ -103,7 +103,7 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
 
         boolean showBuyAndSell = BRConstants.USD.equals(BRSharedPrefs.getPreferredFiatIso(this)) &&
                 ExperimentsRepositoryImpl.INSTANCE.isExperimentActive(Experiments.BUY_SELL_MENU_BUTTON);
-        mBuyMenuLabel.setText(showBuyAndSell ? R.string.HomeScreen_buyAndSell : R.string.HomeScreen_buy);
+        mBuyMenuLabel.setText(R.string.HomeScreen_buyAndSell);
         Map<String, String> eventAttributes = new HashMap<>();
         eventAttributes.put(EventUtils.EVENT_ATTRIBUTE_SHOW, Boolean.toString(showBuyAndSell));
         EventUtils.pushEvent(EventUtils.EVENT_EXPERIMENT_BUY_SELL_MENU_BUTTON, eventAttributes);

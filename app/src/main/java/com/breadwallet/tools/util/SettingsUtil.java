@@ -207,14 +207,14 @@ public final class SettingsUtil {
             BRSharedPrefs.putCurrentWalletCurrencyCode(activity, walletBchManager.getCurrencyCode());
             startCurrencySettings(activity);
         }, false, 0));
-        items.add(new BRSettingsItem(activity.getString(R.string.Prompts_ShareData_title), null, view -> {
-            Intent intent = new Intent(activity, ShareDataActivity.class);
-            activity.startActivity(intent);
-            activity.overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
-        }, false, 0));
-        items.add(new BRSettingsItem(activity.getString(R.string.Settings_notifications), null, view -> {
-            NotificationsSettingsActivity.Companion.start(activity);
-        }, false, 0));
+//        items.add(new BRSettingsItem(activity.getString(R.string.Prompts_ShareData_title), null, view -> {
+//            Intent intent = new Intent(activity, ShareDataActivity.class);
+//            activity.startActivity(intent);
+//            activity.overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+//        }, false, 0));
+//        items.add(new BRSettingsItem(activity.getString(R.string.Settings_notifications), null, view -> {
+//            NotificationsSettingsActivity.Companion.start(activity);
+//        }, false, 0));
         return items;
     }
 

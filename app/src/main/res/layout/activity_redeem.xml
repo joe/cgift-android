@@ -166,19 +166,19 @@
 
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/redeem_wallet_list"
-        android:layout_width="match_parent"
-        android:layout_height="106dp"
-        android:layout_marginTop="12dp"
-        android:orientation="horizontal"
-        android:paddingStart="0dp"
-        android:paddingEnd="200dp"
-        android:clipToPadding="false"
-        android:layout_centerVertical="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardPinRow" />
+<!--    <android.support.v7.widget.RecyclerView-->
+<!--        android:id="@+id/redeem_wallet_list"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="106dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingStart="0dp"-->
+<!--        android:paddingEnd="200dp"-->
+<!--        android:clipToPadding="false"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/cardPinRow" />-->
 
     <Button
         android:id="@+id/redeemButton"
@@ -193,7 +193,7 @@
         android:clickable="true"
         android:enabled="false"
         android:onClick="redeem"
-        android:text="Redeem Bitcoin"
+        android:text="Redeem"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:visibility="visible"

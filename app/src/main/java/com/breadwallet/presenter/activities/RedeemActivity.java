@@ -81,6 +81,7 @@ public class RedeemActivity extends BRActivity {
 
         attachKeyboardListeners();
 
+        /*
         mRedeemRecycler = findViewById(R.id.redeem_wallet_list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false) {
             @Override
@@ -121,6 +122,7 @@ public class RedeemActivity extends BRActivity {
                     public void onLongItemClick(View view, int position) {
                     }
                 }));
+        */
 
         Observable<String> code = RxTextView.textChanges(mCode).skip(1).map(new Function<CharSequence, String>() {
             @Override
