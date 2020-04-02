@@ -39,51 +39,51 @@ public class AboutActivity extends BaseSettingsActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        TextView infoText = findViewById(R.id.info_text);
+        //TextView infoText = findViewById(R.id.info_text);
         TextView policyText = findViewById(R.id.policy_text);
 
-        infoText.setText(String.format(Locale.getDefault(), getString(R.string.About_footer), BuildConfig.VERSION_NAME, BuildConfig.BUILD_VERSION));
-        infoText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mVersionClickedCount++;
-                if (mVersionClickedCount >= VERSION_CLICK_COUNT_FOR_BACKDOOR) {
-                    mVersionClickedCount = 0;
-                    LogsUtils.shareLogs(AboutActivity.this);
-                }
-            }
-        });
+//        infoText.setText(String.format(Locale.getDefault(), getString(R.string.About_footer), BuildConfig.VERSION_NAME, BuildConfig.BUILD_VERSION));
+//        infoText.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mVersionClickedCount++;
+//                if (mVersionClickedCount >= VERSION_CLICK_COUNT_FOR_BACKDOOR) {
+//                    mVersionClickedCount = 0;
+//                    LogsUtils.shareLogs(AboutActivity.this);
+//                }
+//            }
+//        });
+//
+//        ImageView redditShare = findViewById(R.id.reddit_share_button);
+//        ImageView twitterShare = findViewById(R.id.twitter_share_button);
+//        ImageView blogShare = findViewById(R.id.blog_share_button);
+//        mRewardsId = findViewById(R.id.brd_rewards_id);
+//        mCopy = findViewById(R.id.brd_copy);
 
-        ImageView redditShare = findViewById(R.id.reddit_share_button);
-        ImageView twitterShare = findViewById(R.id.twitter_share_button);
-        ImageView blogShare = findViewById(R.id.blog_share_button);
-        mRewardsId = findViewById(R.id.brd_rewards_id);
-        mCopy = findViewById(R.id.brd_copy);
-
-        redditShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(BRConstants.URL_REDDIT));
-                startActivity(browserIntent);
-                AboutActivity.this.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
-            }
-        });
-        twitterShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(BRConstants.URL_TWITTER));
-                startActivity(browserIntent);
-                AboutActivity.this.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
-            }
-        });
-        blogShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(BRConstants.URL_BLOG));
-                startActivity(browserIntent);
-                AboutActivity.this.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
-            }
-        });
+//        redditShare.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(BRConstants.URL_REDDIT));
+//                startActivity(browserIntent);
+//                AboutActivity.this.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
+//            }
+//        });
+//        twitterShare.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(BRConstants.URL_TWITTER));
+//                startActivity(browserIntent);
+//                AboutActivity.this.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
+//            }
+//        });
+//        blogShare.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(BRConstants.URL_BLOG));
+//                startActivity(browserIntent);
+//                AboutActivity.this.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
+//            }
+//        });
         policyText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,15 +93,15 @@ public class AboutActivity extends BaseSettingsActivity {
             }
         });
 
-        mRewardsId.setText(BRSharedPrefs.getWalletRewardId(this));
+        //mRewardsId.setText(BRSharedPrefs.getWalletRewardId(this));
 
-        mCopy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                BRClipboardManager.putClipboard(AboutActivity.this, mRewardsId.getText().toString());
-                Toast.makeText(AboutActivity.this, getString(R.string.Receive_copied), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        mCopy.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                BRClipboardManager.putClipboard(AboutActivity.this, mRewardsId.getText().toString());
+//                Toast.makeText(AboutActivity.this, getString(R.string.Receive_copied), Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override

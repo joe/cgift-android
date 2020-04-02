@@ -309,7 +309,7 @@ public class UiUtils {
             allow = true;
         }
         mLastClickTime = System.currentTimeMillis();
-        return allow;
+        return true;//allow;
     }
 
     public static void killAllFragments(Activity app) {

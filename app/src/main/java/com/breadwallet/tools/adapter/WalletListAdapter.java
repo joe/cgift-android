@@ -2,6 +2,8 @@ package com.breadwallet.tools.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -11,11 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.breadwallet.R;
 import com.breadwallet.model.PriceChange;
 import com.breadwallet.model.Wallet;
+import com.breadwallet.presenter.activities.AddWalletsActivity;
 import com.breadwallet.presenter.customviews.BaseTextView;
 import com.breadwallet.presenter.customviews.ShimmerLayout;
 import com.breadwallet.tools.manager.BRSharedPrefs;
@@ -45,6 +49,7 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
 
     private static final int VIEW_TYPE_WALLET = 0;
     private static final int VIEW_TYPE_ADD_WALLET = 1;
+    private static final int VIEW_TYPE_REDEEM_CARD = 2;
     private final Context mContext;
     private List<Wallet> mWallets;
 
@@ -88,6 +93,8 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
             // Inflate 'Add Wallets' view
             convertView = inflater.inflate(R.layout.add_wallets_item, parent, false);
             return new WalletItemViewHolder(convertView);
+//            convertView = inflater.inflate(R.layout.add_wallets_item, parent, false);
+//            return new WalletListAdapter.AddWalletItemViewHolder(convertView);
         } else {
             throw new IllegalArgumentException("Invalid type: " + viewType);
         }
@@ -134,12 +141,12 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
         if (getItemViewType(position) == VIEW_TYPE_WALLET) {
             Wallet wallet = mWallets.get(position);
             DecoratedWalletItemViewHolder decoratedHolderView = (DecoratedWalletItemViewHolder) holderView;
-            if (wallet.getCurrencyCode().equalsIgnoreCase(WalletTokenManager.BRD_CURRENCY_CODE)
-                    && !BRSharedPrefs.getRewardsAnimationShown(mContext)) {
-                decoratedHolderView.mShimmerLayout.startShimmerAnimation();
-            } else {
-                decoratedHolderView.mShimmerLayout.stopShimmerAnimation();
-            }
+//            if (wallet.getCurrencyCode().equalsIgnoreCase(WalletTokenManager.BRD_CURRENCY_CODE)
+//                    && !BRSharedPrefs.getRewardsAnimationShown(mContext)) {
+//                decoratedHolderView.mShimmerLayout.startShimmerAnimation();
+//            } else {
+//                decoratedHolderView.mShimmerLayout.stopShimmerAnimation();
+//            }
             String name = wallet.getName();
             String currencyCode = wallet.getCurrencyCode();
 
@@ -197,13 +204,12 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
 
             WalletUiConfiguration uiConfiguration = WalletsMaster.getInstance().getWalletByIso(mContext, wallet.getCurrencyCode()).getUiConfiguration();
             String startColor = uiConfiguration.getStartColor();
-            String endColor = uiConfiguration.getEndColor();
+            //String endColor = mContext.getColor(R.color.black_trans);
             Drawable drawable = mContext.getResources().getDrawable(R.drawable.crypto_card_shape, null).mutate();
 
             if (TokenUtil.isTokenSupported(currencyCode)) {
                 // Create gradient if 2 colors exist.
-                ((GradientDrawable) drawable).setColors(new int[]{Color.parseColor(startColor),
-                        Color.parseColor(endColor == null ? startColor : endColor)});
+                ((GradientDrawable) drawable).setColors(new int[]{Color.parseColor(startColor), mContext.getColor(R.color.black_trans)});
                 ((GradientDrawable) drawable).setOrientation(GradientDrawable.Orientation.LEFT_RIGHT);
                 decoratedHolderView.mParent.setBackground(drawable);
                 setWalletItemColors(decoratedHolderView, R.dimen.token_background_no_alpha);
@@ -218,6 +224,15 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
                 setWalletItemColors(decoratedHolderView, R.dimen.token_background_with_alpha);
             }
         } else {
+//            if (holderView instanceof AddWalletItemViewHolder) {
+//                ((AddWalletItemViewHolder) holderView).mParent.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Intent intent = new Intent(mContext, AddWalletsActivity.class);
+//                        mContext.startActivity(intent);
+//                    }
+//                });
+//            }
             BaseTextView addWalletLabel = holderView.itemView.findViewById(R.id.add_wallets);
             addWalletLabel.setText("+ " + mContext.getString(R.string.TokenList_addTitle));
         }
@@ -265,7 +280,7 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
      * {@link RecyclerView.ViewHolder} for each wallet in the home screen wallet list.
      */
     private class DecoratedWalletItemViewHolder extends WalletItemViewHolder {
-        private ShimmerLayout mShimmerLayout;
+        private LinearLayout mShimmerLayout;
         private BaseTextView mWalletName;
         private BaseTextView mTradePrice;
         private BaseTextView mWalletBalanceFiat;
@@ -279,7 +294,7 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
 
         private DecoratedWalletItemViewHolder(View view) {
             super(view);
-            mShimmerLayout = (ShimmerLayout) view;
+            mShimmerLayout = (LinearLayout) view;
             mWalletName = view.findViewById(R.id.wallet_name);
             mTradePrice = view.findViewById(R.id.wallet_trade_price);
             mWalletBalanceFiat = view.findViewById(R.id.wallet_balance_fiat);
@@ -292,4 +307,18 @@ public class WalletListAdapter extends RecyclerView.Adapter<WalletListAdapter.Wa
             mPriceChange = view.findViewById(R.id.price_change);
         }
     }
+
+    public class AddWalletItemViewHolder extends WalletItemViewHolder {
+
+        private BaseTextView mAddWalletsLabel;
+        private View mParent;
+
+        public AddWalletItemViewHolder(View view) {
+            super(view);
+            mAddWalletsLabel = view.findViewById(R.id.add_wallets);
+            mAddWalletsLabel.setText("+ " + mContext.getString(R.string.TokenList_addTitle));
+            mParent = view.findViewById(R.id.wallet_card);
+        }
+    }
+
 }

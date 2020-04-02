@@ -4,13 +4,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.solver.widgets.Rectangle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.Window;
 
 import com.breadwallet.BreadApp;
 import com.breadwallet.R;
@@ -88,6 +94,48 @@ public abstract class BRActivity extends FragmentActivity {
     protected void onDestroy() {
         super.onDestroy();
         ((BreadApp) getApplicationContext()).setDelayServerShutdown(false, -1);
+    }
+
+    private ViewTreeObserver.OnGlobalLayoutListener keyboardLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
+        @Override
+        public void onGlobalLayout() {
+            //int heightDiff = rootLayout.getRootView().getHeight() - rootLayout.getHeight();
+            //int contentViewTop = getWindow().findViewById(Window.ID_ANDROID_CONTENT).getTop();
+
+            LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(BRActivity.this);
+            Rect visibleBounds = new Rect();
+            rootLayout.getWindowVisibleDisplayFrame(visibleBounds);
+            int heightDiff = rootLayout.getHeight() - visibleBounds.height();
+
+            if(heightDiff <= 0){
+                onHideKeyboard();
+                Intent intent = new Intent("KeyboardWillHide");
+                broadcastManager.sendBroadcast(intent);
+            } else {
+                //int keyboardHeight = heightDiff - contentViewTop;
+                onShowKeyboard();
+                Intent intent = new Intent("KeyboardWillShow");
+                //intent.putExtra("KeyboardHeight", keyboardHeight);
+                broadcastManager.sendBroadcast(intent);
+            }
+        }
+    };
+
+    private boolean keyboardListenersAttached = false;
+    //in order to use this your BRActivity layout root must have 'root' id
+    private ViewGroup rootLayout;
+
+    protected void onShowKeyboard() {}
+    protected void onHideKeyboard() {}
+
+    protected void attachKeyboardListeners() {
+        if (keyboardListenersAttached) {
+            return;
+        }
+        //in order to use this your BRActivity layout root must have 'root' id
+        rootLayout = (ViewGroup)findViewById(R.id.rootLayout);
+        rootLayout.getViewTreeObserver().addOnGlobalLayoutListener(keyboardLayoutListener);
+        keyboardListenersAttached = true;
     }
 
     @Override

@@ -10,8 +10,10 @@ android {
     ext {
         brdMarketingVersion = 3   // Major version. Usually affected by marketing. Maximum value: 99
         brdProductVersion = 14    // Minor version. Usually affected by product. Maximum value: 99
-        brdEngineeringVersion = 3 // Hot fix version. Usually affected by engineering. Maximum value: 9
-        brdBuildVersion = 3       // Build version. Increase for each new build. Maximum value: 999
+
+        brdEngineeringVersion = 1
+        // Hot fix version. Usually affected by engineering. Maximum value: 9
+        brdBuildVersion = 1       // Build version. Increase for each new build. Maximum value: 999
 
         // The version code must be monotonically increasing. It is used by Android to maintain upgrade/downgrade
         // relationship between builds with a max value of 2 100 000 000.
@@ -60,15 +62,16 @@ android {
         brd {
             applicationId = "com.breadwallet"
             dimension "mode"
-            resValue "string", "app_name", "BRD"
+            resValue "string", "app_name", "CGift"
             buildConfigField "boolean", "BITCOIN_TESTNET", "false"
-            signingConfig signingConfigs.FakeSigningConfig // Uncomment to fake sign a mainnet release build for testing.
+            signingConfig signingConfigs.FakeSigningConfig
+            // Uncomment to fake sign a mainnet release build for testing.
             missingDimensionStrategy 'network', 'onMainnet'
         }
         brdTestnet {
             applicationId = "com.breadwallet.testnet"
             dimension "mode"
-            resValue "string", "app_name", "BRD Testnet"
+            resValue "string", "app_name", "CGift Testnet"
             buildConfigField "boolean", "BITCOIN_TESTNET", "true"
             signingConfig signingConfigs.FakeSigningConfig
             missingDimensionStrategy 'network', 'onTestnet'
@@ -223,6 +226,29 @@ dependencies {
     implementation 'com.google.guava:guava:25.1-android'
     implementation 'com.google.protobuf:protobuf-lite:3.0.0'
     implementation 'com.google.zxing:core:3.3.0'
+
+    // Retrofit
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    // https://github.com/google/gson
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+
+    // https://github.com/square/retrofit
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
+    //implementation 'com.squareup.okhttp3:okhttp:4.2.0'
+
+    // https://github.com/trello/RxLifecycle
+    implementation 'com.trello:rxlifecycle:1.0'
+    implementation 'com.trello:rxlifecycle-components:1.0'
+
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+// Because RxAndroid releases are few and far between, it is recommended you also
+// explicitly depend on RxJava's latest version for bug fixes and new features.
+// (see https://github.com/ReactiveX/RxJava/releases for latest 2.x.x version)
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.17'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.1.1'
+
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'io.sigpipe:jbsdiff:1.0'

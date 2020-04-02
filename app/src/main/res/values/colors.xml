@@ -5,7 +5,7 @@
     <item name="white_transparent_25" type="color">#40ffffff</item>
     <item name="white_transparent_10" type="color">#14ffffff</item>
 
-    <color name="white_60_percent_opaque">#99FFFFFF</color>
+    <color name="white_60_percent_opaque">#99ffffff</color>
     <item name="blue" type="color">#FF33B5E5</item>
     <item name="red" type="color">#FFFF4444</item>
     <item name="black" type="color">#ff000000</item>
@@ -20,7 +20,7 @@
     <item name="dark_blue" type="color">#4C98FD</item>
     <item name="on_boarding_secondary_text" type="color">#8B89A1</item>
     <item name="on_boarding_buy_button" type="color">#29ABE2</item>
-    <item name="on_boarding_browse_button" type="color">#0DFFFFFF</item>
+    <item name="on_boarding_browse_button" type="color">#0Dffffff</item>
     <item name="notification_gradient_start" type="color">#63BCFF</item>
     <item name="notification_gradient_end" type="color">#378DFD</item>
     <item name="wallet_orange" type="color">#ff8000</item>
@@ -61,7 +61,7 @@
     <item name="pin_pad_text" type="color">#141233</item>
     <item name="extra_light_blue_background" type="color">#f2f2f2</item>
 
-    <item name="button_primary_normal" type="color">#29ABE2</item>
+    <item name="button_primary_normal" type="color">#fff</item>
     <item name="button_secondary" type="color">#F5F8FA</item>
     <item name="button_secondary_text" type="color">#232426</item>
     <item name="confirmation_box" type="color">#141233</item>
@@ -96,6 +96,11 @@
     <color name="sync_text">#ffffff</color>
     <color name="rewards_text">#441E36</color>
 
+    // Settings Screen
+    <color name="settings_close_button">#fff</color>
+    <color name="settings_menu_icons">#fff</color>
+    <color name="settings_menu_background">#222</color>
+
     // Wallet Screen
     <color name="sync_toolbar">#e5e5e5</color>
     <color name="sync_toolbar_text">#828282</color>
@@ -112,25 +117,25 @@
     <color name="add_wallets_border_color">#e5e5e5</color>
 
     // Dark Mode colors
-    <color name="primary_background">#251935</color>
-    <color name="secondary_background">#302442</color>
-    <color name="tertiary_background">#2E2540</color>
+    <color name="primary_background">#111</color>
+    <color name="secondary_background">#222</color>
+    <color name="tertiary_background">#333</color>
     <color name="prompt_background">#1E1C41</color>
     <color name="prompt_input">#f8f7fc</color>
     <color name="button_gradient_start_color">#FF5193</color>
     <color name="button_gradient_end_color">#F29500</color>
     <color name="button_add_wallet_background">#444b77f3</color>
     <color name="button_cancel_add_wallet_background">#44E7AA41</color>
-    <color name="button_add_wallet_text">#4b77f3</color>
+    <color name="button_add_wallet_text">#fff</color>
     <color name="button_cancel_add_wallet_text">#E7AA41</color>
     <color name="text_total_assets_label">#bfffffff</color>
-    <color name="pin_pad_delete">#FF548D</color>
-    <color name="pin_dot_filled_dark">#FF5193</color>
-    <color name="pin_dot_filled_light">#F29500</color>
+    <color name="pin_pad_delete">#fff</color>
+    <color name="pin_dot_filled_dark">#fff</color>
+    <color name="pin_dot_filled_light">#000</color>
     <color name="create_new_wallet_button_dark">#29ABE2</color>
     <color name="create_new_wallet_button_light">#4C98FD</color>
-    <color name="recover_wallet_button_dark">#33FFFFFF</color>
-    <color name="recover_wallet_button_light">#FFFFFF</color>
+    <color name="recover_wallet_button_dark">#33ffffff</color>
+    <color name="recover_wallet_button_light">#ffffff</color>
     <color name="approve_wallet_link_light">#4C98FD</color>
     <color name="deny_wallet_link_light">#B0B0B0</color>
     <color name="approve_wallet_link_dark">#29ABE2</color>
@@ -139,7 +144,7 @@
     <color name="spend_limit_list_divider_color_dark">#b3c0c8</color>
     <color name="unlink_header_start">#97B5ED</color>
     <color name="unlink_header_end">#779DE6</color>
-    <color name="prompt_action_button">#5B6DEE</color>
+    <color name="prompt_action_button">#FAD14F</color>
 
     // Link wallet screen
     <color name="link_wallet_subtitle_dark">#FAA43A</color>
@@ -153,17 +158,17 @@
 
 
     <array name="pin_digit_button_colors">
-        <item>#FE5A80</item>
-        <item>#FC6469</item>
-        <item>#FB6B5C</item>
-        <item>#FA714E</item>
-        <item>#FD5E76</item>
-        <item>#FC6568</item>
-        <item>#FB6B5B</item>
-        <item>#FE5A80</item>
-        <item>#FD5F75</item>
-        <item>#FC6667</item>
-        <item>#FF548D</item>
+        <item>#fff</item>
+        <item>#fff</item>
+        <item>#fff</item>
+        <item>#fff</item>
+        <item>#fff</item>
+        <item>#fff</item>
+        <item>#fff</item>
+        <item>#fff</item>
+        <item>#fff</item>
+        <item>#fff</item>
+        <item>#fff</item>
     </array>
 
 </resources>

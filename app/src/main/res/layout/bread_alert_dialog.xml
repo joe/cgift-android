@@ -12,27 +12,26 @@
         android:id="@+id/dialog_header"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@drawable/bch_dialog_gradient"
         android:orientation="vertical">
 
         <ImageButton
             android:id="@+id/brd_logo"
-            android:layout_width="38dp"
-            android:layout_height="14dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_centerInParent="true"
             android:layout_marginTop="10dp"
-            android:background="@drawable/brd_logo_white_svg" />
+            android:background="@drawable/ic_logo" />
 
-        <ImageButton
-            android:id="@+id/help_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/faq_question_white"
-            android:visibility="visible"
-            app:layout_constraintRight_toRightOf="parent" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/help_icon"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:background="@drawable/faq_question_white"-->
+<!--            android:visibility="visible"-->
+<!--            app:layout_constraintRight_toRightOf="parent" />-->
 
     </RelativeLayout>
 
@@ -42,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center_vertical"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         android:textAlignment="center"
         android:textColor="?attr/secondary_text_color"
@@ -57,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         android:gravity="center_horizontal|center_vertical"
         android:textColor="?attr/secondary_text_color"
@@ -90,11 +89,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_weight="1.0"
-            android:background="@android:color/transparent"
-            app:brdFont="@string/Font.CircularPro_Bold"
-            app:buttonType="4"
-            app:hasShadow="false"
-            app:isBreadButton="true" />
+            style="@style/CircularProFontButton"
+            android:background="@color/prompt_action_button"
+            android:textColor="@color/black" />
 
         <com.breadwallet.presenter.customviews.BRButton
             android:id="@+id/pos_button"
@@ -103,12 +100,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_weight="1.0"
-            android:background="@android:color/transparent"
-            android:textColor="@color/white"
-            app:brdFont="@string/Font.CircularPro_Bold"
-            app:buttonType="4"
-            app:hasShadow="false"
-            app:isBreadButton="true" />
+            style="@style/CircularProFontButton"
+            android:background="@color/prompt_action_button"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 

@@ -7,16 +7,15 @@
 
     <com.breadwallet.presenter.customviews.BaseTextView
         android:id="@+id/word_button"
-        android:layout_width="136dp"
-        android:layout_height="96dp"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/rounded_phrase_word"
         android:clickable="false"
         android:focusable="false"
         android:gravity="center"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="@dimen/sub_header"/>
+        android:textSize="58sp"/>
 
 </RelativeLayout>

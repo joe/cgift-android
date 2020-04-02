@@ -1,0 +1,85 @@
+<html>
+<head>
+    <title>Redeem a CGift</title>
+    <style>
+        body {
+            font-size: 2rem;
+            color: white;
+            background-color: #222222;
+        }
+
+        button, input {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+<h1>Wallet Addresses</h1>
+<table>
+    <tr><td>BTC</td><td><input type="text" id="btc-wallet-address" disabled></input></td></tr>
+    <tr><td>ETH</td><td><input type="text" id="eth-wallet-address" disabled></input></td></tr>
+</table>
+<div id="wallet-address-status">Loading...</div>
+<h1>Navigation</h1>
+<button onclick="javascript:window.cgift.sendMessage('forward', { url: window.location.href });">Forward</button>
+<button onclick="javascript:window.cgift.sendMessage('back');">Back</button>
+<h1>Actions</h1>
+<button onclick="javascript:window.cgift.sendMessage('success', { title: 'Example Success Title', detail: 'This is an example success message.' });">Success</button>
+<button onclick="javascript:window.cgift.sendMessage('failure', { error: 'This is an example error message.' });">Error</button>
+<button onclick="javascript:window.cgift.sendMessage('dismiss');">Dismiss</button>
+<script>
+        function cgiftReady() {
+            /* Define how to receive messages for this page: */
+
+            window.cgift = Object.assign(window.cgift, {
+                receiveMessage: function(name, message) {
+                    switch (name) {
+                    case 'walletAddress':
+                        var currency = message.currency;
+                        var walletAddress = message.walletAddress;
+                        receiveWalletAddress(currency, walletAddress);
+                        break;
+                    default:
+                        break;
+                    }
+                }
+            });
+
+            window.cgift.sendMessage('ready');
+
+            /**
+                Any pre-existing wallet addresses will be
+                sent as messages at this point.
+                e.g. window.cgift.receiveMessage('btc', '1aabc4242...');
+            **/
+
+            var walletAddresses = {};
+
+            function receiveWalletAddress(currency, walletAddress) {
+                walletAddresses[currency] = walletAddress;
+
+                updateWalletAddressInput(currency, walletAddress);
+                updateWalletAddressStatus();
+            }
+
+            function updateWalletAddressInput(currency, walletAddress) {
+                var prefix = currency.toLowerCase();
+                var id = prefix + '-wallet-address';
+                var el = document.getElementById(id);
+                if (el) {
+                    el.value = walletAddress;
+                }
+            }
+
+            function updateWalletAddressStatus() {
+                var id = 'wallet-address-status';
+                var el = document.getElementById(id);
+                var isDone = ('BTC' in walletAddresses && 'ETH' in walletAddresses);
+                if (el) {
+                    el.innerHTML = isDone ? 'All wallets loaded.' : 'Loading...';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

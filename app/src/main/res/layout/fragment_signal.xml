@@ -12,7 +12,7 @@
         android:layout_height="300dp"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="@drawable/signal_layout"
+        android:background="@color/almost_black"
         android:orientation="vertical">
 
         <com.breadwallet.presenter.customviews.BaseTextView
@@ -42,7 +42,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_check_mark_white" />
+            android:src="@drawable/ic_logo" />
 
         <com.breadwallet.presenter.customviews.BaseTextView
             android:id="@+id/description"

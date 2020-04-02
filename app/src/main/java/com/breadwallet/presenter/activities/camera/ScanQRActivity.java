@@ -16,6 +16,7 @@ import android.widget.ImageView;
 
 import com.breadwallet.R;
 import com.breadwallet.presenter.activities.HomeActivity;
+import com.breadwallet.presenter.activities.RedeemActivity;
 import com.breadwallet.presenter.activities.util.BRActivity;
 import com.breadwallet.tools.animation.SpringAnimator;
 import com.breadwallet.tools.manager.AppEntryPointHandler;
@@ -178,8 +179,8 @@ public class ScanQRActivity extends BRActivity implements ActivityCompat.OnReque
                     @Override
                     public void run() {
                         mCameraGuide.setImageResource(R.drawable.cameraguide);
-                        Intent intent = new Intent(ScanQRActivity.this, HomeActivity.class);
-                        intent.putExtra(HomeActivity.EXTRA_DATA, url);
+                        Intent intent = new Intent(ScanQRActivity.this, RedeemActivity.class);
+                        intent.putExtra(RedeemActivity.REDEEM_EXTRA_DATA, url);
                         intent.addFlags(FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         finish();

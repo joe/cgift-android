@@ -34,11 +34,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.breadwallet.BuildConfig;
 import com.breadwallet.R;
 import com.breadwallet.model.Experiments;
 import com.breadwallet.presenter.activities.settings.SettingsActivity;
@@ -48,21 +45,17 @@ import com.breadwallet.presenter.customviews.BaseTextView;
 import com.breadwallet.presenter.viewmodels.HomeViewModel;
 import com.breadwallet.repository.ExperimentsRepositoryImpl;
 import com.breadwallet.tools.adapter.WalletListAdapter;
-import com.breadwallet.tools.animation.UiUtils;
 import com.breadwallet.tools.listeners.RecyclerItemClickListener;
 import com.breadwallet.tools.manager.AppEntryPointHandler;
 import com.breadwallet.tools.manager.BRSharedPrefs;
 import com.breadwallet.tools.manager.InternetManager;
 import com.breadwallet.tools.manager.PromptManager;
 import com.breadwallet.tools.util.BRConstants;
-import com.breadwallet.tools.util.CurrencyUtils;
 import com.breadwallet.tools.util.EventUtils;
 import com.breadwallet.tools.util.Utils;
 import com.breadwallet.ui.notification.InAppNotificationActivity;
 import com.breadwallet.ui.wallet.WalletActivity;
-import com.breadwallet.wallet.wallets.bitcoin.WalletBitcoinManager;
 import com.breadwallet.wallet.wallets.ethereum.WalletTokenManager;
-import com.platform.HTTPServer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -82,10 +75,10 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
 
     private RecyclerView mWalletRecycler;
     private WalletListAdapter mAdapter;
-    private BaseTextView mFiatTotal;
+    //private BaseTextView mFiatTotal;
     private BRNotificationBar mNotificationBar;
     private ConstraintLayout mBuyLayout;
-    private LinearLayout mTradeLayout;
+    //private LinearLayout mTradeLayout;
     private LinearLayout mMenuLayout;
     private LinearLayout mListGroupLayout;
     private HomeViewModel mViewModel;
@@ -97,33 +90,41 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
         setContentView(R.layout.activity_home);
 
         // Show build info as a watermark on non prod builds like: TESTNET 3.10.1 build 1
-        setUpBuildInfoLabel();
+        //setUpBuildInfoLabel();
 
         mWalletRecycler = findViewById(R.id.rv_wallet_list);
-        mFiatTotal = findViewById(R.id.total_assets_usd);
+        //mFiatTotal = findViewById(R.id.total_assets_usd);
         mNotificationBar = findViewById(R.id.notification_bar);
         mBuyLayout = findViewById(R.id.buy_layout);
-        mTradeLayout = findViewById(R.id.trade_layout);
+        //mTradeLayout = findViewById(R.id.trade_layout);
         mMenuLayout = findViewById(R.id.menu_layout);
         mListGroupLayout = findViewById(R.id.list_group_layout);
         mBuyMenuLabel = findViewById(R.id.buy_text_view);
 
         boolean showBuyAndSell = BRConstants.USD.equals(BRSharedPrefs.getPreferredFiatIso(this)) &&
                 ExperimentsRepositoryImpl.INSTANCE.isExperimentActive(Experiments.BUY_SELL_MENU_BUTTON);
-        mBuyMenuLabel.setText(showBuyAndSell ? R.string.HomeScreen_buyAndSell : R.string.HomeScreen_buy);
+        mBuyMenuLabel.setText(R.string.HomeScreen_buyAndSell);
         Map<String, String> eventAttributes = new HashMap<>();
         eventAttributes.put(EventUtils.EVENT_ATTRIBUTE_SHOW, Boolean.toString(showBuyAndSell));
         EventUtils.pushEvent(EventUtils.EVENT_EXPERIMENT_BUY_SELL_MENU_BUTTON, eventAttributes);
+//        mBuyLayout.setOnClickListener(view -> {
+//            Map<String, String> clickAttributes = new HashMap<>();
+//            eventAttributes.put(EventUtils.EVENT_ATTRIBUTE_BUY_AND_SELL, Boolean.toString(showBuyAndSell));
+//            EventUtils.pushEvent(EventUtils.EVENT_HOME_DID_TAP_BUY, clickAttributes);
+//            String url = String.format(BRConstants.CURRENCY_PARAMETER_STRING_FORMAT,
+//                    HTTPServer.getPlatformUrl(HTTPServer.URL_BUY),
+//                    WalletBitcoinManager.getInstance(HomeActivity.this).getCurrencyCode());
+//            UiUtils.startPlatformBrowser(HomeActivity.this, url);
+//        });
+
         mBuyLayout.setOnClickListener(view -> {
-            Map<String, String> clickAttributes = new HashMap<>();
-            eventAttributes.put(EventUtils.EVENT_ATTRIBUTE_BUY_AND_SELL, Boolean.toString(showBuyAndSell));
-            EventUtils.pushEvent(EventUtils.EVENT_HOME_DID_TAP_BUY, clickAttributes);
-            String url = String.format(BRConstants.CURRENCY_PARAMETER_STRING_FORMAT,
-                    HTTPServer.getPlatformUrl(HTTPServer.URL_BUY),
-                    WalletBitcoinManager.getInstance(HomeActivity.this).getCurrencyCode());
-            UiUtils.startPlatformBrowser(HomeActivity.this, url);
+            Intent intent = new Intent(HomeActivity.this, RedeemActivity.class);
+            //intent.putExtra(SettingsActivity.EXTRA_MODE, SettingsActivity.MODE_SETTINGS);
+            startActivity(intent);
+            overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
         });
-        mTradeLayout.setOnClickListener(view -> UiUtils.startPlatformBrowser(HomeActivity.this, HTTPServer.getPlatformUrl(HTTPServer.URL_TRADE)));
+
+        //mTradeLayout.setOnClickListener(view -> UiUtils.startPlatformBrowser(HomeActivity.this, HTTPServer.getPlatformUrl(HTTPServer.URL_TRADE)));
         mMenuLayout.setOnClickListener(view -> {
             Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
             intent.putExtra(SettingsActivity.EXTRA_MODE, SettingsActivity.MODE_SETTINGS);
@@ -131,7 +132,9 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
             overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
         });
         mWalletRecycler.setLayoutManager(new LinearLayoutManager(this));
-        mWalletRecycler.addOnItemTouchListener(new RecyclerItemClickListener(this, mWalletRecycler, new RecyclerItemClickListener.OnItemClickListener() {
+        mWalletRecycler.addOnItemTouchListener(new RecyclerItemClickListener(this,
+                mWalletRecycler,
+                new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position, float x, float y) {
                 if (position >= mAdapter.getItemCount() || position < 0) {
@@ -165,26 +168,30 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
         }));
         processIntentData(getIntent());
 
-        ImageView buyBell = findViewById(R.id.buy_bell);
-        boolean isBellNeeded = ExperimentsRepositoryImpl.INSTANCE.isExperimentActive(Experiments.BUY_NOTIFICATION)
-                && CurrencyUtils.isBuyNotificationNeeded(this);
-        buyBell.setVisibility(isBellNeeded ? View.VISIBLE : View.INVISIBLE);
+//        ImageView buyBell = findViewById(R.id.buy_bell);
+//        boolean isBellNeeded = ExperimentsRepositoryImpl.INSTANCE.isExperimentActive(Experiments.BUY_NOTIFICATION)
+//                && CurrencyUtils.isBuyNotificationNeeded(this);
+//        buyBell.setVisibility(isBellNeeded ? View.VISIBLE : View.INVISIBLE);
 
         mAdapter = new WalletListAdapter(this);
         mWalletRecycler.setAdapter(mAdapter);
 
         // Get ViewModel, observe updates to Wallet and aggregated balance data
         mViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
-        mViewModel.getWallets().observe(this, wallets -> mAdapter.setWallets(wallets));
+//        mViewModel.getWallets()
+//                .observe(this, wallets -> mAdapter.setWallets(wallets));
+        mViewModel.getWallets().observe(this, wallets ->
+                mAdapter.setWallets(wallets)
+        );
 
-        mViewModel.getAggregatedFiatBalance().observe(this, aggregatedFiatBalance -> {
-            if (aggregatedFiatBalance == null) {
-                Log.e(TAG, "fiatTotalAmount is null");
-                return;
-            }
-            mFiatTotal.setText(CurrencyUtils.getFormattedAmount(HomeActivity.this,
-                    BRSharedPrefs.getPreferredFiatIso(HomeActivity.this), aggregatedFiatBalance));
-        });
+//        mViewModel.getAggregatedFiatBalance().observe(this, aggregatedFiatBalance -> {
+//            if (aggregatedFiatBalance == null) {
+//                Log.e(TAG, "fiatTotalAmount is null");
+//                return;
+//            }
+//            mFiatTotal.setText(CurrencyUtils.getFormattedAmount(HomeActivity.this,
+//                    BRSharedPrefs.getPreferredFiatIso(HomeActivity.this), aggregatedFiatBalance));
+//        });
         mViewModel.getNotificationLiveData().observe(this, notification -> {
             if (notification != null) {
                 InAppNotificationActivity.Companion.start(HomeActivity.this, notification);
@@ -234,7 +241,7 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
     @Override
     protected void onResume() {
         super.onResume();
-        showNextPromptIfNeeded();
+        //showNextPromptIfNeeded();
         InternetManager.registerConnectionReceiver(this, this);
         onConnectionChanged(InternetManager.getInstance().isConnected(this));
         mViewModel.refreshWallets();
@@ -266,10 +273,10 @@ public class HomeActivity extends BRActivity implements InternetManager.Connecti
     }
 
     private void setUpBuildInfoLabel() {
-        TextView buildInfoTextView = findViewById(R.id.testnet_label);
-        String network = BuildConfig.BITCOIN_TESTNET ? NETWORK_TESTNET : NETWORK_MAINNET;
-        String buildInfo = network + " " + BuildConfig.VERSION_NAME + " build " + BuildConfig.BUILD_VERSION;
-        buildInfoTextView.setText(buildInfo);
-        buildInfoTextView.setVisibility(BuildConfig.BITCOIN_TESTNET || BuildConfig.DEBUG ? View.VISIBLE : View.GONE);
+//        TextView buildInfoTextView = findViewById(R.id.testnet_label);
+//        String network = BuildConfig.BITCOIN_TESTNET ? NETWORK_TESTNET : NETWORK_MAINNET;
+//        String buildInfo = network + " " + BuildConfig.VERSION_NAME + " build " + BuildConfig.BUILD_VERSION;
+//        buildInfoTextView.setText(buildInfo);
+//        buildInfoTextView.setVisibility(BuildConfig.BITCOIN_TESTNET || BuildConfig.DEBUG ? View.VISIBLE : View.GONE);
     }
 }

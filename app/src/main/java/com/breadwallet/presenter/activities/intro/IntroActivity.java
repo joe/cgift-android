@@ -27,18 +27,25 @@ package com.breadwallet.presenter.activities.intro;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageButton;
 
 import com.breadwallet.BuildConfig;
 import com.breadwallet.R;
+import com.breadwallet.presenter.activities.InputPinActivity;
+import com.breadwallet.presenter.activities.PaperKeyActivity;
 import com.breadwallet.presenter.activities.util.BRActivity;
 import com.breadwallet.presenter.customviews.BRButton;
 import com.breadwallet.tools.animation.UiUtils;
+import com.breadwallet.tools.security.BRKeyStore;
+import com.breadwallet.tools.security.PostAuth;
+import com.breadwallet.tools.threads.executor.BRExecutor;
 import com.breadwallet.tools.util.EventUtils;
 import com.breadwallet.tools.util.BRConstants;
 import com.breadwallet.tools.util.Utils;
 import com.breadwallet.wallet.WalletsMaster;
 import com.breadwallet.wallet.abstracts.BaseWalletManager;
+import com.platform.APIClient;
 
 /**
  * Activity shown when there is no wallet, here the user can pick between creating new wallet or recovering one with
@@ -72,10 +79,15 @@ public class IntroActivity extends BRActivity {
             if (!UiUtils.isClickAllowed()) {
                 return;
             }
-            EventUtils.pushEvent(EventUtils.EVENT_LANDING_PAGE_GET_STARTED);
-            Intent intent = new Intent(IntroActivity.this, OnBoardingActivity.class);
-            overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
-            startActivity(intent);
+            //EventUtils.pushEvent(EventUtils.EVENT_LANDING_PAGE_GET_STARTED);
+            //Intent intent = new Intent(IntroActivity.this, OnBoardingActivity.class);
+            if (BRKeyStore.getPinCode(this).length() > 0) {
+                UiUtils.startBreadActivity(this, true);
+            } else {
+                setupPin(OnBoardingActivity.NextScreen.HOME_SCREEN);
+            }
+            //overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+            //startActivity(intent);
         });
 
         buttonRecoverWallet.setOnClickListener(v -> {
@@ -91,6 +103,22 @@ public class IntroActivity extends BRActivity {
             if (!UiUtils.isClickAllowed()) return;
             BaseWalletManager wm = WalletsMaster.getInstance().getCurrentWallet(IntroActivity.this);
             UiUtils.showSupportFragment(IntroActivity.this, BRConstants.FAQ_START_VIEW, wm);
+        });
+    }
+
+    public void setupPin(final OnBoardingActivity.NextScreen nextScreen) {
+        BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(() -> {
+            PostAuth.getInstance().onCreateWalletAuth(this, false, () -> {
+                APIClient.getInstance(IntroActivity.this).updatePlatform();
+                Intent intent = new Intent(IntroActivity.this, InputPinActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                if (nextScreen == OnBoardingActivity.NextScreen.BUY_SCREEN) {
+                    intent.putExtra(InputPinActivity.EXTRA_PIN_NEXT_SCREEN, PaperKeyActivity.DoneAction.SHOW_BUY_SCREEN.name());
+                }
+                intent.putExtra(InputPinActivity.EXTRA_PIN_IS_ONBOARDING, true);
+                IntroActivity.this.overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+                IntroActivity.this.startActivity(intent);
+            });
         });
     }
 
